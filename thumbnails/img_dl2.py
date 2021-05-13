@@ -43,15 +43,20 @@ def image_downloader(file: object):
         for row in csv_dict_reader:
             file_name = row["record_id"]
             file_url = row["url"]
+            file_url2 = row["url2"]
 
             # Open the url file, set stream to True, this will return the stream content.
             r = requests.get(file_url, headers={'Referer': file_url}, stream=True)
-            extension = mimetypes.guess_extension(r.headers.get('content-type', '').split(';')[0])
+            #extension = mimetypes.guess_extension(r.headers.get('content-type', '').split(';')[0])
             #print(extension)
-            full_name = file_name + extension
+            #full_name = file_name + extension
 
             # Check if the image was retrieved successfully
             if r.status_code == 200:
+                extension = mimetypes.guess_extension(r.headers.get('content-type', '').split(';')[0])
+                # print(extension)
+                full_name = file_name + extension
+
                 # Set decode_content value to True, otherwise the downloaded image file's size will be zero.
                 r.raw.decode_content = True
 

@@ -21,16 +21,6 @@ for f in files:
     tree = ET.parse(f)
     root = tree.getroot()
 
-    # Do url prefix replacement
-    for elem in root.iter():
-        try:
-        # HBCULA replacement
-          elem.text = elem.text.replace('http://hbcudigitallibrary.auctr.edu/cdm/ref/collection/', 'https://hbcudigitallibrary.auctr.edu/digital/iiif/')
-          elem.text = elem.text.replace('/id', '')
-
-        except AttributeError:
-          pass
-
     for item in root:
         coll = item.find("collection/record_id").text
         slug = item.find("slug").text
@@ -38,9 +28,13 @@ for f in files:
 
         # Add repo_coll to slug and append TN url
         record_id = coll + "_" + slug
-        # HBCULA addendum
+        # url changes to thumb version
         url = edm_is_shown_at + "/full/300,/0/default.jpg"
-        url2 = edm_is_shown_at + "/full/full/0/default.jpg"
+        url.replace('http://hbcudigitallibrary.auctr.edu/cdm/ref/collection/', 'https://hbcudigitallibrary.auctr.edu/digital/iiif/')
+        url.replace('/id', '')
+        # url changes to full download
+        url2 = edm_is_shown_at + "/size/full"
+        url2.replace('http://hbcudigitallibrary.auctr.edu/cdm/ref/','https://hbcudigitallibrary.auctr.edu/digital/')
 
         rows.append({"record_id": record_id,
                      "url": url,
