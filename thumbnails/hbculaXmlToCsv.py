@@ -14,7 +14,7 @@ files = [fi for fi in os.listdir(path) if fi.endswith('.xml')]
 for f in files:
     file_name = os.path.splitext(f)[0] + ".csv"
     print("Converting ", file_name)
-    col_names = ["record_id", "url"]
+    col_names = ["record_id", "url", "url2"]
     rows = []
 
     # Parsing the XML file
