@@ -29,12 +29,12 @@ for f in files:
         # Add repo_coll to slug and append TN url
         record_id = coll + "_" + slug
         # url changes to thumb version
-        url = edm_is_shown_at + "/full/300,/0/default.jpg"
-        url.replace('http://hbcudigitallibrary.auctr.edu/cdm/ref/collection/', 'https://hbcudigitallibrary.auctr.edu/digital/iiif/')
-        url.replace('/id', '')
+        url_rpl1 = edm_is_shown_at + "/full/300,/0/default.jpg"
+        url_rpl2 = url_rpl1.replace('http://hbcudigitallibrary.auctr.edu/cdm/ref/collection/', 'https://hbcudigitallibrary.auctr.edu/digital/iiif/')
+        url = url_rpl2.replace('/id', '')
         # url changes to full download
-        url2 = edm_is_shown_at + "/size/full"
-        url2.replace('http://hbcudigitallibrary.auctr.edu/cdm/ref/','https://hbcudigitallibrary.auctr.edu/digital/')
+        url2_rpl1 = edm_is_shown_at + "/size/full"
+        url2 = url2_rpl1.replace('http://hbcudigitallibrary.auctr.edu/cdm/ref/','https://hbcudigitallibrary.auctr.edu/digital/')
 
         rows.append({"record_id": record_id,
                      "url": url,
