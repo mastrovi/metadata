@@ -33,8 +33,7 @@ for f in files:
         url_rpl2 = url_rpl1.replace('http://hbcudigitallibrary.auctr.edu/cdm/ref/collection/', 'https://hbcudigitallibrary.auctr.edu/digital/iiif/')
         url = url_rpl2.replace('/id', '')
         # url changes to full download
-        url2_rpl1 = edm_is_shown_at + "/size/full"
-        url2 = url2_rpl1.replace('http://hbcudigitallibrary.auctr.edu/cdm/ref/','https://hbcudigitallibrary.auctr.edu/digital/')
+        url2 = edm_is_shown_at.replace('http://hbcudigitallibrary.auctr.edu/cdm/ref/','https://hbcudigitallibrary.auctr.edu/digital/')
 
         rows.append({"record_id": record_id,
                      "url": url,
