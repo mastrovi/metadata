@@ -1,14 +1,18 @@
-Contains two types of files for thumbnail generation of harvested records:
+Files for thumbnail generation of harvested records:
 
-1. XmlToCsv.py
+1. XmlToCsv
    * Will transform ActiveXML from dlgadmin to a csv with record_id, url, url2
    * Urls are direct paths to thumbnails
-   * Institution specific
-2. img_dl_cdm.py -- Image retrieval and download (requires csv format)
+   * Institution specific, prefixed with repo slug
+2. Reconciliation
+   * Counts the number of records from a dlg-thumbnails directory listing
+3. img_dl_2.py
+   * Base script without DAMS specific modifications
+4. img_dl_cdm.py -- Image retrieval and download (requires csv format)
    * Creates a folder with the same name as the csv
    * Downloads thumbnail if found and names it with record_id
    * Download full size first image or whole pdf, whichever is accessible
-3. img_dl_islandora.py -- Image retrieval and download (requires csv format)
+5. img_dl_islandora.py -- Image retrieval and download (requires csv format)
    * Creates a folder with the same name as the csv
    * Downloads thumbnail if found and names it with record_id   
 
