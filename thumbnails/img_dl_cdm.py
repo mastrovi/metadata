@@ -118,4 +118,5 @@ def image_downloader(file: object):
 
 if __name__ == '__main__':
     input_file = input("Input the collectionSlug.csv with two values: record_id,url: ")
+    input_file = input_file.strip('\"')
     image_downloader(input_file)
