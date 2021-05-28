@@ -14,6 +14,11 @@ Files for thumbnail generation of harvested records:
    * Download full size first image or whole pdf, whichever is accessible
 5. img_dl_islandora.py -- Image retrieval and download (requires XmlToCsv format)
    * Creates a folder with the same name as the csv
-   * Downloads thumbnail if found and names it with record_id   
+   * Downloads thumbnail if found and names it with record_id
+6. img_dl_omeka.py -- Image retrieval and download (requires XmlToCsv format)
+   * Creates a folder with the same name as the csv
+   * Downloads thumbnail if found and names it with record_id
+   * Download full size first image or whole pdf, whichever is accessible
+   * Currently works for Columbus and FCS flavors of Omeka
 
    
