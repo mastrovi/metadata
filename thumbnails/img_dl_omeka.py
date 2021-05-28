@@ -67,21 +67,25 @@ def image_downloader(file: object):
             page = html.parse(doc)
 
             try:
+                # Columbus University style Omeka
                 full_image_url = page.xpath("//div[@id='item-images']/div[1]/a[1]/@href")[0]
             except:
-                full_image_url = page.xpath("//div[@class='media-link']/a[1]/@href")[0]
-            else:
-                error_count(file_name, url)
-                # Add to counter
-                fail_counter += 1
+                try:
+                    # Fulton County Shools style Omeka
+                    full_image_url = page.xpath("//div[@class='media-link']/a[1]/@href")[0]
+                except:
+                    # FCS pdf
+                    full_image_url = page.xpath("//div[@id='other-media']/div[1]/a[1]/@href")[0]
 
             # Check if the image was retrieved successfully and if so, do work
             r = requests.get(full_image_url, stream=True)
 
             if r.ok:
                 extension = mimetypes.guess_extension(r.headers.get('content-type', '').split(';')[0])
-                # print(extension)
-                full_name = "full_" + file_name + extension
+                if extension == ".pdf":
+                    full_name = "pdf_" + file_name + extension
+                else:
+                    full_name = "full_" + file_name + extension
 
                 # Set decode_content value to True, otherwise the downloaded image file's size will be zero.
                 r.raw.decode_content = True
