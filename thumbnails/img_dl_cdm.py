@@ -70,37 +70,38 @@ def image_downloader(file: object):
             else:
                 doc = urllib.request.urlopen(url2)
                 page = html.parse(doc)
-                full_image_url = page.xpath("//meta[@property='og:image']/@content")[0]
 
-                r = requests.get(full_image_url, stream=True)
+                try:
+                    full_image_url = page.xpath("//meta[@property='og:image']/@content")[0]
+                    r = requests.get(full_image_url, stream=True)
 
-                if r.ok:
-                    extension = mimetypes.guess_extension(r.headers.get('content-type', '').split(';')[0])
-                    # print(extension)
-                    full_name = "full_" + file_name + extension
+                    if r.ok:
+                        extension = mimetypes.guess_extension(r.headers.get('content-type', '').split(';')[0])
+                        # print(extension)
+                        full_name = "full_" + file_name + extension
 
-                    # Set decode_content value to True, otherwise the downloaded image file's size will be zero.
-                    r.raw.decode_content = True
+                        # Set decode_content value to True, otherwise the downloaded image file's size will be zero.
+                        r.raw.decode_content = True
 
-                    # Open a local file with wb ( write binary ) permission.
-                    with open(full_name, 'wb') as f:
-                        shutil.copyfileobj(r.raw, f)
+                        # Open a local file with wb ( write binary ) permission.
+                        with open(full_name, 'wb') as f:
+                            shutil.copyfileobj(r.raw, f)
 
-                    # Add to counter
-                    success_counter += 1
-                    print(full_name, ' successfully downloaded')
+                        # Add to counter
+                        success_counter += 1
+                        print(full_name, ' successfully downloaded')
 
-                    # Pause for a half second to be kinder to the server
-                    time.sleep(1)
+                        # Pause for a half second to be kinder to the server
+                        time.sleep(1)
 
-                else:
+                except:
                     print('Object Couldn\'t be retreived ', file_name)
                     # Add to counter
                     fail_counter += 1
 
                     # Open text file and append filename and url
                     fail_text = open("failed.txt", "a")
-                    fail_text.writelines(file_name + "," + file_url + "\n")
+                    fail_text.writelines(file_name + "," + url2 + "\n")
                     fail_text.close()
 
                     # Pause for a half second to be kinder to the server
