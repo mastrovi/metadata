@@ -72,10 +72,33 @@ def image_downloader(file: object):
                 page = html.parse(doc)
 
                 try:
-                    full_image_url = page.xpath("//div[@class='aside download-button']/a[1]/@href")[0]
+                    # Try to get medium size image
+                    full_image_url = page.xpath("//div[@class='aside download-button']/a[@id='img-med']/@href")[0]
+                except:
+                    try:
+                        # Try to get full object
+                        full_image_url = page.xpath("//div[@class='aside download-button']/a[@id='native']/@href")[0]
+                    except:
+                        try:
+                            # Alternate full object path
+                            full_image_url = page.xpath("//a[@id='alpha-pdf']/@href")[0]
+                        except:
+                            print('Object Couldn\'t be retreived ', file_name)
+                            # Add to counter
+                            fail_counter += 1
+
+                            # Open text file and append filename and url
+                            fail_text = open("failed.txt", "a")
+                            fail_text.writelines(file_name + "," + url2 + "\n")
+                            fail_text.close()
+
+                            # Pause for a half second to be kinder to the server
+                            time.sleep(1)
+
                     r = requests.get(full_image_url, stream=True)
 
                     if r.ok:
+                        print("Downloading: ", file_name)
                         extension = mimetypes.guess_extension(r.headers.get('content-type', '').split(';')[0])
                         # print(extension)
                         full_name = "full_" + file_name + extension
@@ -90,41 +113,6 @@ def image_downloader(file: object):
                         # Add to counter
                         success_counter += 1
                         print(full_name, ' successfully downloaded')
-
-                        # Pause for a half second to be kinder to the server
-                        time.sleep(1)
-                except:
-                    try:
-                        full_image_url = page.xpath("//a[@id='alpha-pdf']/@href")[0]
-                        r = requests.get(full_image_url, stream=True)
-
-                        if r.ok:
-                            extension = mimetypes.guess_extension(r.headers.get('content-type', '').split(';')[0])
-                            # print(extension)
-                            full_name = "full_" + file_name + extension
-
-                            # Set decode_content value to True, otherwise the downloaded image file's size will be zero.
-                            r.raw.decode_content = True
-
-                            # Open a local file with wb ( write binary ) permission.
-                            with open(full_name, 'wb') as f:
-                                shutil.copyfileobj(r.raw, f)
-
-                            # Add to counter
-                            success_counter += 1
-                            print(full_name, ' successfully downloaded')
-
-                            # Pause for a half second to be kinder to the server
-                            time.sleep(1)
-                    except:
-                        print('Object Couldn\'t be retreived ', file_name)
-                        # Add to counter
-                        fail_counter += 1
-
-                        # Open text file and append filename and url
-                        fail_text = open("failed.txt", "a")
-                        fail_text.writelines(file_name + "," + url2 + "\n")
-                        fail_text.close()
 
                         # Pause for a half second to be kinder to the server
                         time.sleep(1)
