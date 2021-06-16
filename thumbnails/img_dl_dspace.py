@@ -43,6 +43,8 @@ def image_downloader(file: object):
         for row in csv_dict_reader:
             file_name = row["record_id"]
             url1 = row["url"]
+            url_prefix_split = url1.split("/")
+            url_prefix = '/'.join(url_prefix_split[:3]).strip()
 
             r = requests.get(url1, stream=True)
 
@@ -53,23 +55,27 @@ def image_downloader(file: object):
 
                 try:
                     # Try to get thumbnail image
-                    full_image_url = "https://soar.kennesaw.edu/" + page.xpath("//div[@class='thumbnail']/img[@class='img-thumbnail']/@src")[0]
+                    full_image_url = url_prefix + page.xpath("//div[@class='thumbnail']/img[@class='img-thumbnail']/@src")[0]
                 except:
                     try:
                         # Try to get full object
-                        full_image_url = "https://soar.kennesaw.edu/" + page.xpath("//div[@id='file-section-list']/div/a/@href")[0]
+                        full_image_url = url_prefix + page.xpath("//div[@id='file-section-list']/div/a/@href")[0]
                     except:
-                        print('Object Couldn\'t be retreived ', file_name)
-                        # Add to counter
-                        fail_counter += 1
+                        try:
+                            # Try to get full object version 2
+                            full_image_url = url_prefix + page.xpath("//div[@class='file-link']/a/@href")[0]
+                        except:
+                            print('Object Couldn\'t be retreived ', file_name)
+                            # Add to counter
+                            fail_counter += 1
 
-                        # Open text file and append filename and url
-                        fail_text = open("failed.txt", "a")
-                        fail_text.writelines(file_name + "," + url2 + "\n")
-                        fail_text.close()
+                            # Open text file and append filename and url
+                            fail_text = open("failed.txt", "a")
+                            fail_text.writelines(file_name + "," + url2 + "\n")
+                            fail_text.close()
 
-                        # Pause for a half second to be kinder to the server
-                        time.sleep(1)
+                            # Pause for a half second to be kinder to the server
+                            time.sleep(1)
 
                 r = requests.get(full_image_url, stream=True)
 
