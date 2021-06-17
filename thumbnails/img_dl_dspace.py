@@ -83,10 +83,10 @@ def image_downloader(file: object):
                     r = requests.get(full_image_url, stream=True)
 
                     if r.ok:
-                        print("Downloading: ", file_name)
                         extension = mimetypes.guess_extension(r.headers.get('content-type', '').split(';')[0])
                         # print(extension)
                         full_name = "full_" + file_name + extension
+                        print("Downloading: ", full_name)
 
                         # Set decode_content value to True, otherwise the downloaded image file's size will be zero.
                         r.raw.decode_content = True
