@@ -96,7 +96,7 @@ def image_downloader(file: object):
 
                         # Add to counter
                         success_counter += 1
-                        print(full_name, ' successfully downloaded')
+                        #print(full_name, ' successfully downloaded')
 
                         # Pause for a half second to be kinder to the server
                         time.sleep(1)
