@@ -96,7 +96,7 @@ def image_downloader(file: object):
                                 fail_text.writelines(file_name + "," + url2 + "\n")
                                 fail_text.close()
 
-                                # Pause for a half second to be kinder to the server
+                                # Pause for a second to be kinder to the server
                                 time.sleep(1)
 
                 try:
@@ -120,7 +120,7 @@ def image_downloader(file: object):
                         success_counter += 1
                         #print(full_name, ' successfully downloaded')
 
-                        # Pause for a half second to be kinder to the server
+                        # Pause for a second to be kinder to the server
                         time.sleep(1)
                 except:
                     pass

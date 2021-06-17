@@ -43,6 +43,7 @@ def image_downloader(file: object):
         for row in csv_dict_reader:
             file_name = row["record_id"]
             url1 = row["url"]
+            # Get url prefix since it isn't provided in the link src
             url_prefix_split = url1.split("/")
             url_prefix = '/'.join(url_prefix_split[:3]).strip()
 
@@ -98,7 +99,7 @@ def image_downloader(file: object):
                         success_counter += 1
                         #print(full_name, ' successfully downloaded')
 
-                        # Pause for a half second to be kinder to the server
+                        # Pause for a second to be kinder to the server
                         time.sleep(1)
                 except:
                     pass
@@ -113,7 +114,7 @@ def image_downloader(file: object):
                 fail_text.writelines(file_name + "," + url2 + "\n")
                 fail_text.close()
 
-                # Pause for a half second to be kinder to the server
+                # Pause for a second to be kinder to the server
                 time.sleep(1)
 
         # Print statement to confirm quantity of successful downloads
