@@ -77,7 +77,7 @@ def image_downloader(file: object):
                 except:
                     try:
                         # Try to get thumb size image
-                        full_image_url = page.xpath("//div[@id='cover-img']/img/@src")[0]
+                        thumb_image_url = page.xpath("//div[@id='cover-img']/img/@src")[0]
                     except:
                         try:
                             # Try to get full object
@@ -123,7 +123,31 @@ def image_downloader(file: object):
                         # Pause for a second to be kinder to the server
                         time.sleep(1)
                 except:
-                    pass
+                    try:
+                        thumb_image_url
+                        r = requests.get(thumb_image_url, stream=True)
+
+                        if r.ok:
+                            extension = mimetypes.guess_extension(r.headers.get('content-type', '').split(';')[0])
+                            # print(extension)
+                            full_name = file_name + extension
+                            print("Downloading: ", full_name)
+
+                            # Set decode_content value to True, otherwise the downloaded image file's size will be zero.
+                            r.raw.decode_content = True
+
+                            # Open a local file with wb ( write binary ) permission.
+                            with open(full_name, 'wb') as f:
+                                shutil.copyfileobj(r.raw, f)
+
+                            # Add to counter
+                            success_counter += 1
+                            # print(full_name, ' successfully downloaded')
+
+                            # Pause for a second to be kinder to the server
+                            time.sleep(1)
+                    except:
+                        pass
 
         # Print statement to confirm quantity of successful downloads
         if (fail_counter == 0):
