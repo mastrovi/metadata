@@ -81,7 +81,7 @@ def image_downloader(file: object):
                     except:
                         try:
                             # Try to get full object
-                            full_image_url = page.xpath("//div[@class='aside download-button']/a[@id='native']/@href")[0]
+                            full_image_url = page.xpath("//div[@class='aside download-button']/a/@href")[0]
                         except:
                             try:
                                 # Alternate full object path

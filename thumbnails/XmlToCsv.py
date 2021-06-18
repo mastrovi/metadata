@@ -44,7 +44,8 @@ class modifications(object):
         return (url, url2)
 
     def gkj_replace(self):
-        url = self.edm_is_shown_at
+        url_repl1 = edm_is_shown_at.replace("https://hdl.handle.net/", "https://soar.kennesaw.edu/")
+        url = url_repl1.replace("http://hdl.handle.net/", "https://soar.kennesaw.edu/")
         url2 = self.edm_is_shown_at
         return (url, url2)
 

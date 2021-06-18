@@ -66,16 +66,25 @@ def image_downloader(file: object):
             doc = urllib.request.urlopen(url)
             page = html.parse(doc)
 
-            try:
-                # Columbus University style Omeka
-                full_image_url = page.xpath("//div[@id='item-images']/div[1]/a[1]/@href")[0]
-            except:
+            if file_name.startswith("columbus_"):
                 try:
-                    # Fulton County Shools style Omeka
+                    # Columbus University style Omeka
+                    full_image_url = page.xpath("//div[@id='item-images']/div[1]/a[1]/@href")[0]
+                except:
+                    pass
+            elif file_name.startswith("fcs_"):
+                try:
+                    # Fulton County Shcools style Omeka
                     full_image_url = page.xpath("//div[@class='media-link']/a[1]/@href")[0]
                 except:
                     # FCS pdf
                     full_image_url = page.xpath("//div[@id='other-media']/div[1]/a[1]/@href")[0]
+            elif file_name.startswith("gbc_"):
+                try:
+                    # Berry College Omeka
+                    full_image_url = page.xpath("//a[@class='download-file']/@href")[0]
+                except:
+                    pass
 
             # Check if the image was retrieved successfully and if so, do work
             r = requests.get(full_image_url, stream=True)
