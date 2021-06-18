@@ -56,7 +56,7 @@ def image_downloader(file: object):
 
                 try:
                     # Try to get thumbnail image
-                    full_image_url = url_prefix + page.xpath("//div[@class='thumbnail']/img[@class='img-thumbnail']/@src")[0]
+                    image_url = url_prefix + page.xpath("//div[@class='thumbnail']/img[@class='img-thumbnail']/@src")[0]
                 except:
                     try:
                         # Try to get full object
@@ -77,15 +77,14 @@ def image_downloader(file: object):
 
                             # Pause for a half second to be kinder to the server
                             time.sleep(1)
-
                 try:
-                    full_image_url
-                    r = requests.get(full_image_url, stream=True)
+                    image_url
+                    r = requests.get(image_url, stream=True)
 
                     if r.ok:
                         extension = mimetypes.guess_extension(r.headers.get('content-type', '').split(';')[0])
                         # print(extension)
-                        full_name = "full_" + file_name + extension
+                        full_name = file_name + extension
                         print("Downloading: ", full_name)
 
                         # Set decode_content value to True, otherwise the downloaded image file's size will be zero.
@@ -102,7 +101,31 @@ def image_downloader(file: object):
                         # Pause for a second to be kinder to the server
                         time.sleep(1)
                 except:
-                    pass
+                    try:
+                        full_image_url
+                        r = requests.get(full_image_url, stream=True)
+
+                        if r.ok:
+                            extension = mimetypes.guess_extension(r.headers.get('content-type', '').split(';')[0])
+                            # print(extension)
+                            full_name = "full_" + file_name + extension
+                            print("Downloading: ", full_name)
+
+                            # Set decode_content value to True, otherwise the downloaded image file's size will be zero.
+                            r.raw.decode_content = True
+
+                            # Open a local file with wb ( write binary ) permission.
+                            with open(full_name, 'wb') as f:
+                                shutil.copyfileobj(r.raw, f)
+
+                            # Add to counter
+                            success_counter += 1
+                            #print(full_name, ' successfully downloaded')
+
+                            # Pause for a second to be kinder to the server
+                            time.sleep(1)
+                    except:
+                        pass
 
             else:
                 print('Object Couldn\'t be retreived ', file_name)

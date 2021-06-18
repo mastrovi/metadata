@@ -44,9 +44,10 @@ class modifications(object):
         return (url, url2)
 
     def gkj_replace(self):
-        url_repl1 = edm_is_shown_at.replace("https://hdl.handle.net/", "https://soar.kennesaw.edu/")
+        url_repl1 = self.edm_is_shown_at.replace("https://hdl.handle.net/", "https://soar.kennesaw.edu/")
         url = url_repl1.replace("http://hdl.handle.net/", "https://soar.kennesaw.edu/")
-        url2 = self.edm_is_shown_at
+        url2_repl1 = self.edm_is_shown_at.replace("https://hdl.handle.net/", "https://soar.kennesaw.edu/")
+        url2 = url2_repl1.replace("http://hdl.handle.net/", "https://soar.kennesaw.edu/")
         return (url, url2)
 
     def gpm_replace(self):
@@ -64,7 +65,8 @@ class modifications(object):
     def valdosta_replace(self):
         url_repl1 = edm_is_shown_at.replace("https://hdl.handle.net/", "https://vtext.valdosta.edu/xmlui/handle/")
         url = url_repl1.replace("http://hdl.handle.net/", "https://vtext.valdosta.edu/xmlui/handle/")
-        url2 = self.edm_is_shown_at
+        url2_repl1 = edm_is_shown_at.replace("https://hdl.handle.net/", "https://vtext.valdosta.edu/xmlui/handle/")
+        url2 = url2_repl1.replace("http://hdl.handle.net/", "https://vtext.valdosta.edu/xmlui/handle/")
         return (url, url2)
 
     def repoWork(self):
