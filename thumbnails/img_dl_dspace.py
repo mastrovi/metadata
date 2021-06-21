@@ -59,6 +59,10 @@ def image_downloader(file: object):
                     image_url = url_prefix + page.xpath("//div[@class='thumbnail']/img[@class='img-thumbnail']/@src")[0]
                 except:
                     try:
+                        # Try to get thumbnail image v2
+                        image_url = url_prefix + page.xpath("//div[@class='thumbnail']/a/img/@src")[0]
+                    except:
+                    try:
                         # Try to get full object
                         full_image_url = url_prefix + page.xpath("//div[@id='file-section-list']/div/a/@href")[0]
                     except:
