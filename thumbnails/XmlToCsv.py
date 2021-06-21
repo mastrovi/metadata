@@ -63,8 +63,10 @@ class modifications(object):
         return (url, url2)
 
     def mercer_replace(self):
-        url = self.edm_is_shown_at
-        url2 = self.edm_is_shown_at
+        url_repl1 = self.edm_is_shown_at.replace("https://hdl.handle.net/", "https://ursa.mercer.edu/")
+        url = url_repl1.replace("http://hdl.handle.net/", "https://ursa.mercer.edu/")
+        url2_repl1 = self.edm_is_shown_at.replace("https://hdl.handle.net/", "https://ursa.mercer.edu/")
+        url2 = url2_repl1.replace("http://hdl.handle.net/", "https://ursa.mercer.edu/")
         return (url, url2)
 
     def valdosta_replace(self):
