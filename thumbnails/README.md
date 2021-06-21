@@ -2,7 +2,8 @@ Files for thumbnail generation of harvested records:
 
 1. XmlToCsv
    * Will transform ActiveXML from dlgadmin to a csv with record_id, url, url2
-   * Urls are direct paths to thumbnails
+   * Url is direct path to thumbnail
+   * Url2 is path to object 
    * Institution specific, prefixed with repo slug
 2. Reconciliation
    * Counts the number of records from a dlg-thumbnails directory listing
