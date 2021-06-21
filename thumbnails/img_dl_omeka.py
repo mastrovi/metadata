@@ -37,9 +37,9 @@ def image_downloader(file: object):
     # Strip quotes if they exist
 
     # Gets directory of input csv
-    work_dir = os.path.dirname(input_file)
+    work_dir = os.path.dirname(file)
     # Gets filename without extension
-    base = os.path.basename(input_file)
+    base = os.path.basename(file)
     # Appends filename to directory path
     thumb_dir = work_dir + '/' + os.path.splitext(base)[0]
 
