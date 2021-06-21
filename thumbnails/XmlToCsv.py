@@ -64,9 +64,11 @@ class modifications(object):
 
     def mercer_replace(self):
         url_repl1 = self.edm_is_shown_at.replace("https://hdl.handle.net/", "https://ursa.mercer.edu/")
-        url = url_repl1.replace("http://hdl.handle.net/", "https://ursa.mercer.edu/")
+        url_repl2 = url_repl1.replace("http://hdl.handle.net/", "https://ursa.mercer.edu/")
+        url = url_repl2.replace("https://libraries.mercer.edu/ursa/", "https://ursa.mercer.edu/")
         url2_repl1 = self.edm_is_shown_at.replace("https://hdl.handle.net/", "https://ursa.mercer.edu/")
-        url2 = url2_repl1.replace("http://hdl.handle.net/", "https://ursa.mercer.edu/")
+        url2_repl2 = url2_repl1.replace("https://libraries.mercer.edu/ursa/", "https://ursa.mercer.edu/")
+        url2 = url2_repl2.replace("http://hdl.handle.net/", "https://ursa.mercer.edu/")
         return (url, url2)
 
     def valdosta_replace(self):
