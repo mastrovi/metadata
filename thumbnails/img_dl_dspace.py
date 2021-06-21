@@ -66,17 +66,21 @@ def image_downloader(file: object):
                             # Try to get full object version 2
                             full_image_url = url_prefix + page.xpath("//div[@class='file-link']/a/@href")[0]
                         except:
-                            print('Object Couldn\'t be retreived ', file_name)
-                            # Add to counter
-                            fail_counter += 1
+                            try:
+                                # Try to get full object version 3
+                                full_image_url = url_prefix + page.xpath("//div[@class='thumbnail']/a/@href")[0]
+                            except:
+                                print('Object Couldn\'t be retreived ', file_name)
+                                # Add to counter
+                                fail_counter += 1
 
-                            # Open text file and append filename and url
-                            fail_text = open("failed.txt", "a")
-                            fail_text.writelines(file_name + "," + url1 + "\n")
-                            fail_text.close()
+                                # Open text file and append filename and url
+                                fail_text = open("failed.txt", "a")
+                                fail_text.writelines(file_name + "," + url1 + "\n")
+                                fail_text.close()
 
-                            # Pause for a half second to be kinder to the server
-                            time.sleep(1)
+                                # Pause for a half second to be kinder to the server
+                                time.sleep(1)
                 try:
                     image_url
                     r = requests.get(image_url, stream=True)
