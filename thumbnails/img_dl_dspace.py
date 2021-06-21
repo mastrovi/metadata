@@ -134,7 +134,7 @@ def image_downloader(file: object):
 
                 # Open text file and append filename and url
                 fail_text = open("failed.txt", "a")
-                fail_text.writelines(file_name + "," + url2 + "\n")
+                fail_text.writelines(file_name + "," + url1 + "\n")
                 fail_text.close()
 
                 # Pause for a second to be kinder to the server
