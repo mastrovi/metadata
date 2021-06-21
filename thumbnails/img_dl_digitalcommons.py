@@ -80,28 +80,24 @@ def image_downloader(file: object):
                         thumb_image_url = page.xpath("//div[@id='cover-img']/img/@src")[0]
                     except:
                         try:
-                            # Try to get thumb size image v2
-                            thumb_image_url = page.xpath("//div[@class='thumbnail']/img/@src")[0]
+                            # Try to get full object
+                            full_image_url = page.xpath("//div[@class='aside download-button']/a/@href")[0]
                         except:
                             try:
-                                # Try to get full object
-                                full_image_url = page.xpath("//div[@class='aside download-button']/a/@href")[0]
+                                # Alternate full object path
+                                full_image_url = page.xpath("//a[@id='alpha-pdf']/@href")[0]
                             except:
-                                try:
-                                    # Alternate full object path
-                                    full_image_url = page.xpath("//a[@id='alpha-pdf']/@href")[0]
-                                except:
-                                    print('Object Couldn\'t be retreived ', file_name)
-                                    # Add to counter
-                                    fail_counter += 1
+                                print('Object Couldn\'t be retreived ', file_name)
+                                # Add to counter
+                                fail_counter += 1
 
-                                    # Open text file and append filename and url
-                                    fail_text = open("failed.txt", "a")
-                                    fail_text.writelines(file_name + "," + url2 + "\n")
-                                    fail_text.close()
+                                # Open text file and append filename and url
+                                fail_text = open("failed.txt", "a")
+                                fail_text.writelines(file_name + "," + url2 + "\n")
+                                fail_text.close()
 
-                                    # Pause for a second to be kinder to the server
-                                    time.sleep(1)
+                                # Pause for a second to be kinder to the server
+                                time.sleep(1)
 
                 try:
                     full_image_url
