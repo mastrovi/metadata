@@ -20,7 +20,7 @@
    * Downloads thumbnail if found and names it with record_id
    * Download full size first image or whole object, whichever is accessible
 4. __img_dl_general.py__
-   * __Will take whatever csv you feed it, figure out which DAMS script to use (based on repo code) and run that script__
+   * __Will take whatever csv you feed it, figure out which DAMS script to use (based on record_id repo code) and run that script__
    * __The repo will need to be added to the dictionary the first time we generate thumbs for it__
 5. img_dl_islandora.py -- Image retrieval and download (requires XmlToCsv format)
    * Creates a folder with the same name as the csv
