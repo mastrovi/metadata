@@ -14,6 +14,7 @@ repo_dams = {
     'gkj' : img_dl_dspace,
     'gpm' : img_dl_digitalcommons,
     'gpm-hend' : img_dl_digitalcommons,
+    'gsu' : img_dl_cdm,
     'fcs' : img_dl_omeka,
     'hbcula' : img_dl_cdm,
     'mercer' : img_dl_dspace,

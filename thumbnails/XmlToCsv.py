@@ -75,6 +75,13 @@ class modifications(object):
         url2 = self.edm_is_shown_at
         return (url, url2)
 
+    def gsu_replace(self):
+        url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
+        url_rpl2 = url_rpl1.replace('http://digitalcollections.library.gsu.edu/cdm/ref/collection/', 'http://digitalcollections.library.gsu.edu/digital/iiif/')
+        url = url_rpl2.replace('/id', '')
+        url2 = self.edm_is_shown_at.replace('http://digitalcollections.library.gsu.edu/cdm/ref/', 'http://digitalcollections.library.gsu.edu/digital/')
+        return (url, url2)
+
     def hbcula_replace(self):
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url_rpl2 = url_rpl1.replace('http://hbcudigitallibrary.auctr.edu/cdm/ref/collection/', 'https://hbcudigitallibrary.auctr.edu/digital/iiif/')
