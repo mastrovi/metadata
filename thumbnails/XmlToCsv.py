@@ -24,6 +24,11 @@ class modifications(object):
         self.repo = repo
         self.edm_is_shown_at = edm_is_shown_at
 
+    def aasu_replace(self):
+        url = self.edm_is_shown_at + "/preview.jpg"
+        url2 = self.edm_is_shown_at
+        return (url, url2)
+
     def auu_replace(self):
         url2 = re.sub('http(.*):(.*):(.*)', r'http\1:\2%3A\3', self.edm_is_shown_at)
         url_rpl1 = self.edm_is_shown_at + "/datastream/TN/view"
@@ -65,6 +70,11 @@ class modifications(object):
         url2 = self.edm_is_shown_at
         return (url, url2)
 
+    def gpmhend_replace(self):
+        url = self.edm_is_shown_at + "/preview.jpg"
+        url2 = self.edm_is_shown_at
+        return (url, url2)
+
     def hbcula_replace(self):
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url_rpl2 = url_rpl1.replace('http://hbcudigitallibrary.auctr.edu/cdm/ref/collection/', 'https://hbcudigitallibrary.auctr.edu/digital/iiif/')
@@ -89,7 +99,8 @@ class modifications(object):
         return (url, url2)
 
     def repoWork(self):
-        fn = getattr(self, repo + '_replace', None)  # find method that located within the class
+        # find method that located within the class
+        fn = getattr(self, repo + '_replace', None)
         if fn is not None:
             urls = fn()
             return urls
@@ -118,6 +129,8 @@ for f in files:
         slug = item.find("slug").text
         edm_is_shown_at = item.find("edm_is_shown_at/edm_is_shown_at").text
         repo = coll.split('_')[0]
+        if "-" in repo:
+            repo = repo.replace("-","")
         record_id = coll + "_" + slug
 
         mods = modifications(repo, edm_is_shown_at)

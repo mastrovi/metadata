@@ -6,12 +6,14 @@ import img_dl_cdm, img_dl_digitalcommons, img_dl_dspace, img_dl_omeka, img_dl_is
 
 # repos and their DAMS
 repo_dams = {
+    'aasu' : img_dl_digitalcommons,
     'auu' : img_dl_islandora,
     'columbus' : img_dl_omeka,
     'gbc' : img_dl_omeka,
     'geh' : img_dl_cdm,
     'gkj' : img_dl_dspace,
     'gpm' : img_dl_digitalcommons,
+    'gpm-hend' : img_dl_digitalcommons,
     'fcs' : img_dl_omeka,
     'hbcula' : img_dl_cdm,
     'mercer' : img_dl_dspace,

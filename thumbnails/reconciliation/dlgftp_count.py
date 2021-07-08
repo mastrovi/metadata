@@ -1,6 +1,6 @@
 collections = dict()
 
-with open("C:\\Users\\Nicole Lawrence\\Desktop\\thumbnails\\dlg-thumbnails-tree_edit-txt.txt", "r") as file:
+with open("C:\\Users\\Nicole Lawrence\\Desktop\\thumbnails\\thumbnails_20210622_edit.txt", "r") as file:
     for line in file.readlines():
         if (line.find('_') != -1):
             coll, value = line.rsplit("_", 1)
