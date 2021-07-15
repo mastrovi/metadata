@@ -83,6 +83,7 @@
 <dlg_subject_personal type="array">
 {{forEach(cells["dlg_subject_personal"].value.split("||"), subPers, "<dlg_subject_personal>" + subPers + "</dlg_subject_personal>\n")}}
 </dlg_subject_personal>
+{{forEach(cells["iiif_partner_url"].value.split("||"), iiif, "<iiif_partner_url>" + iiif + "</iiif_partner_url>")}}
 </item>
 
 
