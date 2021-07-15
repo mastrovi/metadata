@@ -105,6 +105,13 @@ class modifications(object):
         url2 = url2_repl1.replace("http://hdl.handle.net/", "https://vtext.valdosta.edu/xmlui/handle/")
         return (url, url2)
 
+    def youtube_replace(self):
+        url1 = self.edm_is_shown_at.replace("https://www.youtube.com/embed/","http://img.youtube.com/vi/")
+        url2 = url1.replace("https://youtube.com/embed/", "http://img.youtube.com/vi/")
+        url = url2 + "/hqdefault.jpg"
+        url2 = self.edm_is_shown_at
+        return (url, url2)
+
     def repoWork(self):
         # find method that located within the class
         fn = getattr(self, repo + '_replace', None)
@@ -135,13 +142,19 @@ for f in files:
         coll = item.find("collection/record_id").text
         slug = item.find("slug").text
         edm_is_shown_at = item.find("edm_is_shown_at/edm_is_shown_at").text
+        edm_is_shown_by = item.find("edm_is_shown_by/edm_is_shown_by").text
         repo = coll.split('_')[0]
         if "-" in repo:
             repo = repo.replace("-","")
         record_id = coll + "_" + slug
 
-        mods = modifications(repo, edm_is_shown_at)
-        urls = mods.repoWork()
+        if "youtube" in edm_is_shown_by:
+            repo = "youtube"
+            mods = modifications(repo, edm_is_shown_by)
+            urls = mods.repoWork()
+        else:
+            mods = modifications(repo, edm_is_shown_at)
+            urls = mods.repoWork()
 
         rows.append({"record_id": record_id,
                      "url": urls[0],
