@@ -142,7 +142,10 @@ for f in files:
         coll = item.find("collection/record_id").text
         slug = item.find("slug").text
         edm_is_shown_at = item.find("edm_is_shown_at/edm_is_shown_at").text
-        edm_is_shown_by = item.find("edm_is_shown_by/edm_is_shown_by").text
+        try:
+            edm_is_shown_by = item.find("edm_is_shown_by/edm_is_shown_by").text
+        except:
+            edm_is_shown_by = "none"
         repo = coll.split('_')[0]
         if "-" in repo:
             repo = repo.replace("-","")
