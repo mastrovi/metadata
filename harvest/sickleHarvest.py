@@ -1,10 +1,14 @@
 from sickle import Sickle
 
+# -- Set file save location
+save_location = input("Enter the directory to save the xml ")
+file_path = save_location + '\harvest.xml'
+
 # -- Set harvest URL
-sickle = Sickle('http://digitalcollections.library.gsu.edu:80/oai/oai.php')
+sickle = Sickle('https://archivesspace.thebreman.org/oai/')
 
 # -- Create record file(s)
-f = open('harvest.xml', 'w+', encoding="utf-8")
+f = open(file_path, 'w+', encoding="utf-8")
 
 # -- Print xml declaration and opening tag
 print("<?xml version='1.0' encoding='UTF-8'?>", file=f)
@@ -12,9 +16,9 @@ print("<records>", file=f)
 
 # -- Set metadata prefix and set
 records = sickle.ListRecords(
-           **{'metadataPrefix':'oai_qdc',
+           **{'metadataPrefix':'oai_ead',
            'from':'1999-01-01',
-         'set':'lgbtq',
+         'set':'collection',
            'ignore_deleted':'True'
            })
 
