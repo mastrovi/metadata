@@ -1,10 +1,8 @@
 import json, os
 import pandas as pd
 
-#file = "C:\\Users\\Nicole Lawrence\\OneDrive - University of Georgia\\Documents\\Metadata\\page_json\\lccr-pages.xlsx"
-file = "C:\\Users\\Nicole Lawrence\\OneDrive - University of Georgia\\Documents\\Metadata\\page_json\\gyca_gaphind-images-batch4.xlsx"
-#file = input("What excel file would you like to run this on? ")
-#file = input_file.strip('\"')
+file = input("What excel file would you like to run this on? ")
+file = input_file.strip('\"')
 
 # File types
 file_types = {'image': 'jp2',
