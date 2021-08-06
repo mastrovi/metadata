@@ -14,7 +14,7 @@ class modifications(object):
             urls (as tuple) for csv
 
     def repoWork():
-        Call the approriate replace function based on repo code
+        Call the appropriate replace function based on repo code
         Args:
             repo, edm_is_shown_at
         Returns:
@@ -56,6 +56,11 @@ class modifications(object):
         url_rpl2 = url_rpl1.replace('http://album.atlantahistorycenter.com/cdm/ref/collection/', 'https://album.atlantahistorycenter.com/digital/iiif/')
         url = url_rpl2.replace('/id', '')
         url2 = self.edm_is_shown_at.replace('http://album.atlantahistorycenter.com/cdm/ref/', 'https://album.atlantahistorycenter.com/digital/')
+        return (url, url2)
+
+    def ghn_replace(self):
+        url = self.edm_is_shown_at
+        url2 = self.edm_is_shown_at
         return (url, url2)
 
     def gkj_replace(self):
@@ -153,6 +158,10 @@ for f in files:
 
         if "youtube" in edm_is_shown_by:
             repo = "youtube"
+            mods = modifications(repo, edm_is_shown_by)
+            urls = mods.repoWork()
+        elif "ghn" in edm_is_shown_by:
+            repo = "ghn"
             mods = modifications(repo, edm_is_shown_by)
             urls = mods.repoWork()
         else:
