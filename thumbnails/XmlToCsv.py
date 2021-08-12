@@ -59,7 +59,9 @@ class modifications(object):
         return (url, url2)
 
     def ghn_replace(self):
-        url = self.edm_is_shown_at
+        url_rpl1 = self.edm_is_shown_at + "/"
+        url_rpl2 = url_rpl1.replace('http://dlg.galileo.usg.edu/do:dlg_ghn_', 'https://gahistoricnewspapers.galileo.usg.edu/lccn/')
+        url = re.sub('-(\d\d\d\d-\d\d-\d\d)-', r'/\1/', url_rpl2)
         url2 = self.edm_is_shown_at
         return (url, url2)
 
@@ -161,6 +163,10 @@ for f in files:
             mods = modifications(repo, edm_is_shown_by)
             urls = mods.repoWork()
         elif "ghn" in edm_is_shown_by:
+            repo = "ghn"
+            mods = modifications(repo, edm_is_shown_by)
+            urls = mods.repoWork()
+        elif "gahistoricnewspapers" in edm_is_shown_by:
             repo = "ghn"
             mods = modifications(repo, edm_is_shown_by)
             urls = mods.repoWork()
