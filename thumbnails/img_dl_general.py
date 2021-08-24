@@ -1,18 +1,17 @@
-import os, requests, csv, shutil, time, mimetypes, subprocess
 import pandas as pd
-import urllib.parse as urlparse
-import urllib.request
 import img_dl_cdm, img_dl_digitalcommons, img_dl_dspace, img_dl_generic, img_dl_omeka, img_dl_islandora
 
 # repos and their DAMS
 repo_dams = {
     'aasu' : img_dl_digitalcommons,
     'auu' : img_dl_islandora,
+    'carter' : img_dl_generic,
     'columbus' : img_dl_omeka,
     'gbc' : img_dl_omeka,
     'gcl' : img_dl_generic,
     'geh' : img_dl_cdm,
     'gkj' : img_dl_dspace,
+    'gnd' : img_dl_digitalcommons,
     'gpm' : img_dl_digitalcommons,
     'gpm-hend' : img_dl_digitalcommons,
     'gsu' : img_dl_cdm,
@@ -33,4 +32,5 @@ repo = row_two[0]
 repo_code = repo.split('_')[0]
 dl_file = repo_dams[repo_code]
 
+# Run approriate respository script
 dl_file.image_downloader(input_file)
