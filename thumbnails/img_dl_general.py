@@ -3,6 +3,7 @@ import img_dl_cdm, img_dl_digitalcommons, img_dl_dspace, img_dl_generic, img_dl_
 
 # repos and their DAMS
 repo_dams = {
+    'aar' : img_dl_cdm,
     'aasu' : img_dl_digitalcommons,
     'auu' : img_dl_islandora,
     'carter' : img_dl_generic,

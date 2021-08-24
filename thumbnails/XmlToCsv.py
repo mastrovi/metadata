@@ -24,6 +24,13 @@ class modifications(object):
         self.repo = repo
         self.edm_is_shown_at = edm_is_shown_at
 
+    def aar_replace(self):
+        url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
+        url_rpl2 = url_rpl1.replace('http://digital.archives.alabama.gov/cdm/ref/collection/', 'http://digital.archives.alabama.gov/digital/iiif/')
+        url = url_rpl2.replace('/id', '')
+        url2 = self.edm_is_shown_at.replace('http://digital.archives.alabama.gov/cdm/ref/', 'http://digital.archives.alabama.gov/digital/')
+        return (url, url2)
+
     def aasu_replace(self):
         url = self.edm_is_shown_at + "/preview.jpg"
         url2 = self.edm_is_shown_at
