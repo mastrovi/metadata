@@ -2,7 +2,7 @@ import json, os
 import pandas as pd
 
 file = input("What excel file would you like to run this on? ")
-file = input_file.strip('\"')
+file = file.strip('\"')
 
 # File types
 file_types = {'image': 'jp2',

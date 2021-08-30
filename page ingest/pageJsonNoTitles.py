@@ -1,7 +1,7 @@
 import json, os
 import pandas as pd
 
-file = input("What excel file would you like to run this on? ")
+input_file = input("What excel file would you like to run this on? ")
 file = input_file.strip('\"')
 
 # File types
