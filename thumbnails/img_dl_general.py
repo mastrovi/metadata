@@ -6,6 +6,7 @@ repo_dams = {
     'aar' : img_dl_cdm,
     'aasu' : img_dl_digitalcommons,
     'auu' : img_dl_islandora,
+    'bcri' : img_dl_generic,
     'carter' : img_dl_generic,
     'columbus' : img_dl_omeka,
     'gbc' : img_dl_omeka,
