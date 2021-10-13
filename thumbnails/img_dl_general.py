@@ -10,7 +10,7 @@ repo_dams = {
     'carter' : img_dl_generic,
     'columbus' : img_dl_omeka,
     'gbc' : img_dl_omeka,
-    'gcl' : img_dl_generic,
+    'gcl' : img_dl_cdm,
     'geh' : img_dl_cdm,
     'gkj' : img_dl_dspace,
     'gnd' : img_dl_digitalcommons,

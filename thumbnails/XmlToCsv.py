@@ -69,6 +69,13 @@ class modifications(object):
         url2 = self.edm_is_shown_at
         return (url, url2)
 
+    def gcl_replace(self):
+        url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
+        url_rpl2 = url_rpl1.replace('http://cdm17323.contentdm.oclc.org/cdm/ref/collection/', 'https://cdm17323.contentdm.oclc.org/digital/iiif/')
+        url = url_rpl2.replace('/id', '')
+        url2 = self.edm_is_shown_at.replace('http://cdm17323.contentdm.oclc.org/cdm/ref/', 'https://cdm17323.contentdm.oclc.org/digital/')
+        return (url, url2)
+
     def geh_replace(self):
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url_rpl2 = url_rpl1.replace('http://album.atlantahistorycenter.com/cdm/ref/collection/', 'https://album.atlantahistorycenter.com/digital/iiif/')
