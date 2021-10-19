@@ -4,11 +4,17 @@ import os, re, sys
 from lxml import etree
 
 # --- Ask for file, take file name with or without extension. If no extension, add it ---
+# --- Uncomment for single file
 #xmlFile = input('What xml file would you like to convert? (Enter full file path)')
+#xmlFile = xmlFile.strip('\"')
 #if ".xml" not in xmlFile:
 #    xmlFile = xmlFile  + '.xml'
 
+# --- Runs on a directory
+# --- Comment out for single file
 path = input('What directory would you like to run this on? ')
+
+
 # Change to path directory
 os.chdir(path)
 
