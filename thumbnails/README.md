@@ -9,16 +9,18 @@
    * Counts the number of records from a dlg-thumbnails directory listing
 
 ### Image Downloads
-1. img_dl_2.py
+1. img_dl_cdm.py -- Image retrieval and download (requires XmlToCsv format)
+   * Creates a folder with the same name as the csv
+   * Downloads thumbnail if found and names it with record_id
+   * Download full size first image or whole object, whichever is accessible
+2. img_dl_digitalcommons.py -- Image retrieval and download (requires XmlToCsv format)
+   * Creates a folder with the same name as the csv
+   * Downloads thumbnail if found and names it with record_id
+   * Download full size first image or whole object, whichever is accessible
+3. img_dl_generic.py
    * Base script without DAMS specific modifications
-2. img_dl_cdm.py -- Image retrieval and download (requires XmlToCsv format)
    * Creates a folder with the same name as the csv
    * Downloads thumbnail if found and names it with record_id
-   * Download full size first image or whole object, whichever is accessible
-3. img_dl_digitalcommons.py -- Image retrieval and download (requires XmlToCsv format)
-   * Creates a folder with the same name as the csv
-   * Downloads thumbnail if found and names it with record_id
-   * Download full size first image or whole object, whichever is accessible
 4. __img_dl_general.py__
    * __Will take whatever csv you feed it, figure out which DAMS script to use (based on record_id repo code) and run that script__
    * __The repo will need to be added to the dictionary the first time we generate thumbs for it__
