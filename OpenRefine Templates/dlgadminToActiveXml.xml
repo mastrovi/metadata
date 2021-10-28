@@ -96,7 +96,7 @@
 {{forEach(cells["item - dcterms_relation"].value.split("||"), rel, "<dcterms_relation>" + rel + "</dcterms_relation>\n")}}
 </dcterms_relation>
 {{forEach(cells["item - iiif_partner_url"].value.split("||"), iiif, "<iiif_partner_url>" + iiif + "</iiif_partner_url>")}}
-{{forEach(cells["item - iiif_partner_url_enabled"].value.split("||"), iiif_enabled, "<iiif_partner_url_enabled type="boolean">" + iiif_enabled + "</iiif_partner_url_enabled>")}}
+{{forEach(cells["item - iiif_partner_url_enabled"].value.split("||"), iiif_enabled, "<iiif_partner_url_enabled type=\"boolean\">" + iiif_enabled + "</iiif_partner_url_enabled>")}}
 </item>
 
 
