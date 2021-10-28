@@ -1,6 +1,17 @@
+import os
+
 collections = dict()
 
-with open("C:\\Users\\Nicole Lawrence\\Desktop\\thumbnails\\thumbnails_20210622_edit.txt", "r") as file:
+input_file = input("Input the path to the thumbnail tree: ")
+input_file = input_file.strip('\"')
+
+work_dir = os.path.dirname(input_file)
+# Gets filename without extension
+base = os.path.basename(input_file)
+# Appends filename to directory path
+new_file = work_dir + '/collection_thumb_counts.txt'
+
+with open(input_file, "r") as file:
     for line in file.readlines():
         if (line.find('_') != -1):
             coll, value = line.rsplit("_", 1)
@@ -13,5 +24,5 @@ with open("C:\\Users\\Nicole Lawrence\\Desktop\\thumbnails\\thumbnails_20210622_
         else:
             pass
 
-with open('C:\\Users\\Nicole Lawrence\\Desktop\\thumbnails\\collection_thumb_counts.txt', 'w') as f:
+with open(new_file, 'w') as f:
     print(collections, file=f)
