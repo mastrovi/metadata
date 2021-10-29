@@ -93,7 +93,7 @@ def image_downloader(file: object):
                         print(file_name, ' successfully downloaded')
 
                         # Pause for a half second to be kinder to the server
-                        time.sleep(1)
+                        time.sleep(.5)
 
                 except:
                     try:
@@ -129,7 +129,7 @@ def image_downloader(file: object):
                         fail_text.close()
 
                         # Pause for a half second to be kinder to the server
-                        time.sleep(1)
+                        time.sleep(.5)
 
         # Print statement to confirm quantity of successful downloads
         if (fail_counter == 0):
