@@ -23,6 +23,13 @@ class modifications(object):
     def __init__(self, repo, edm_is_shown_at):
         self.repo = repo
         self.edm_is_shown_at = edm_is_shown_at
+        
+    def aaa_replace(self):
+        url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
+        url_rpl2 = url_rpl1.replace('http://content.lib.auburn.edu/cdm/ref/collection/', 'http://content.lib.auburn.edu/digital/iiif/')
+        url = url_rpl2.replace('/id', '')
+        url2 = self.edm_is_shown_at.replace('http://content.lib.auburn.edu/cdm/ref/', 'http://content.lib.auburn.edu/digital/')
+        return (url, url2)    
 
     def aar_replace(self):
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
@@ -34,6 +41,13 @@ class modifications(object):
     def aasu_replace(self):
         url = self.edm_is_shown_at + "/preview.jpg"
         url2 = self.edm_is_shown_at
+        return (url, url2)
+    
+    def alm_replace(self):
+        url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
+        url_rpl2 = url_rpl1.replace('http://digitalcollections.libraries.ua.edu/cdm/ref/collection/', 'https://digitalcollections.libraries.ua.edu/digital/iiif/')
+        url = url_rpl2.replace('/id', '')
+        url2 = self.edm_is_shown_at.replace('http://digitalcollections.libraries.ua.edu/cdm/ref/', 'https://digitalcollections.libraries.ua.edu/digital/')
         return (url, url2)
 
     def auu_replace(self):
