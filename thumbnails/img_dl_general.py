@@ -5,6 +5,7 @@ import img_dl_cdm, img_dl_digitalcommons, img_dl_dspace, img_dl_generic, img_dl_
 repo_dams = {
     'aar' : img_dl_cdm,
     'aasu' : img_dl_digitalcommons,
+    'alm' : img_dl_cdm,
     'auu' : img_dl_islandora,
     'bcri' : img_dl_generic,
     'carter' : img_dl_generic,
@@ -20,7 +21,8 @@ repo_dams = {
     'fcs' : img_dl_omeka,
     'hbcula' : img_dl_cdm,
     'mercer' : img_dl_dspace,
-    'valdosta' : img_dl_dspace
+    'valdosta' : img_dl_dspace,
+    'vrc' : img_dl_islandora
 }
 
 # Ask for file
