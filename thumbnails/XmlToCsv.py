@@ -163,6 +163,11 @@ class modifications(object):
         url2 = url2_repl1.replace("http://hdl.handle.net/", "https://vtext.valdosta.edu/xmlui/handle/")
         return (url, url2)
 
+    def vrc_replace(self):
+        url = self.edm_is_shown_at + "/datastream/TN/view"
+        url2 = self.edm_is_shown_at
+        return (url, url2)
+
     def youtube_replace(self):
         url1 = self.edm_is_shown_at.replace("https://www.youtube.com/embed/","http://img.youtube.com/vi/")
         url2 = url1.replace("https://youtube.com/embed/", "http://img.youtube.com/vi/")
