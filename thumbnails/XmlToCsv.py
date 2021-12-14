@@ -77,7 +77,14 @@ class modifications(object):
         url = self.edm_is_shown_at
         url2 = self.edm_is_shown_at
         return (url, url2)
-
+    
+    def fqr_replace(self):
+        url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
+        url_rpl2 = url_rpl1.replace('http://digitalcollections.library.miami.edu/cdm/ref/collection/', 'https://digitalcollections.library.miami.edu/digital/iiif/')
+        url = url_rpl2.replace('/id', '')
+        url2 = self.edm_is_shown_at.replace('http://digitalcollections.library.miami.edu/cdm/ref/', 'https://digitalcollections.library.miami.edu/digital/')
+        return (url, url2)
+    
     def gbc_replace(self):
         url = self.edm_is_shown_at
         url2 = self.edm_is_shown_at
