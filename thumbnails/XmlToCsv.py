@@ -104,6 +104,11 @@ class modifications(object):
         url2 = self.edm_is_shown_at.replace('http://album.atlantahistorycenter.com/cdm/ref/', 'https://album.atlantahistorycenter.com/digital/')
         return (url, url2)
 
+    def geusc_replace(self):
+        url = self.edm_is_shown_at
+        url2 = self.edm_is_shown_at
+        return (url, url2)
+
     def ghn_replace(self):
         url_rpl1 = self.edm_is_shown_at + "/"
         url_rpl2 = url_rpl1.replace('http://dlg.galileo.usg.edu/do:dlg_ghn_', 'https://gahistoricnewspapers.galileo.usg.edu/lccn/')
@@ -205,6 +210,7 @@ for f in files:
         coll = item.find("collection/record_id").text
         slug = item.find("slug").text
         edm_is_shown_at = item.find("edm_is_shown_at/edm_is_shown_at").text
+        iiif_partner_url = item.find("iiif_partner_url").text
         try:
             edm_is_shown_by = item.find("edm_is_shown_by/edm_is_shown_by").text
         except:
@@ -230,6 +236,11 @@ for f in files:
             repo = "dlg"
             mods = modifications(repo, edm_is_shown_by)
             urls = mods.repoWork()
+        elif "geusc" in repo:
+            repo = "geusc"
+            mods = modifications(repo, iiif_partner_url)
+            urls = mods.repoWork()
+
         else:
             mods = modifications(repo, edm_is_shown_at)
             urls = mods.repoWork()
