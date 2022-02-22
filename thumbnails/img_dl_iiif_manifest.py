@@ -47,7 +47,20 @@ def image_downloader(file: object):
 
             r = requests.get(url1, stream=True)
             manifest = r.json()
-            page1 = manifest['sequences'][0]['canvases'][0]['images'][0]['resource']['@id']
+            try:
+                page1 = manifest['sequences'][0]['canvases'][0]['images'][0]['resource']['@id']
+            except:
+                print('Image Couldn\'t be retreived ', file_name)
+                # Add to counter
+                fail_counter += 1
+
+                # Open text file and append filename and url
+                fail_text = open("failed.txt", "a")
+                fail_text.writelines(file_name + "," + page1 + "\n")
+                fail_text.close()
+
+                # Pause for a half second to be kinder to the server
+                time.sleep(1)
 
             # Check if the first page url responds and if so, do work
             firstImage = requests.get(page1, headers={'Referer': page1}, stream=True)
