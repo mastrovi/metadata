@@ -49,6 +49,40 @@ def image_downloader(file: object):
             manifest = r.json()
             try:
                 page1 = manifest['sequences'][0]['canvases'][0]['images'][0]['resource']['@id']
+
+                # Check if the first page url responds and if so, do work
+                firstImage = requests.get(page1, headers={'Referer': page1}, stream=True)
+                if firstImage.status_code == 200:
+                    extension = mimetypes.guess_extension(firstImage.headers.get('content-type', '').split(';')[0])
+                    # print(extension)
+                    full_name = "full_" + file_name + extension
+
+                    # Set decode_content value to True, otherwise the downloaded image file's size will be zero.
+                    firstImage.raw.decode_content = True
+
+                    # Open a local file with wb ( write binary ) permission.
+                    with open(full_name, 'wb') as f:
+                        shutil.copyfileobj(firstImage.raw, f)
+
+                    # Add to counter
+                    success_counter += 1
+                    print(file_name, ' successfully downloaded')
+
+                    # Pause for a half second to be kinder to the server
+                    time.sleep(.5)
+
+                else:
+                    print('Image Couldn\'t be retreived ', file_name)
+                    # Add to counter
+                    fail_counter += 1
+
+                    # Open text file and append filename and url
+                    fail_text = open("failed.txt", "a")
+                    fail_text.writelines(file_name + "," + page1 + "\n")
+                    fail_text.close()
+
+                    # Pause for a half second to be kinder to the server
+                    time.sleep(.5)
             except:
                 print('Image Couldn\'t be retreived ', file_name)
                 # Add to counter
@@ -60,41 +94,9 @@ def image_downloader(file: object):
                 fail_text.close()
 
                 # Pause for a half second to be kinder to the server
-                time.sleep(1)
+                time.sleep(.5)
+                continue
 
-            # Check if the first page url responds and if so, do work
-            firstImage = requests.get(page1, headers={'Referer': page1}, stream=True)
-            if firstImage.status_code == 200:
-                extension = mimetypes.guess_extension(firstImage.headers.get('content-type', '').split(';')[0])
-                # print(extension)
-                full_name = file_name + extension
-
-                # Set decode_content value to True, otherwise the downloaded image file's size will be zero.
-                firstImage.raw.decode_content = True
-
-                # Open a local file with wb ( write binary ) permission.
-                with open(full_name, 'wb') as f:
-                    shutil.copyfileobj(firstImage.raw, f)
-
-                # Add to counter
-                success_counter += 1
-                print(file_name, ' successfully downloaded')
-
-                # Pause for a half second to be kinder to the server
-                time.sleep(1)
-
-            else:
-                print('Image Couldn\'t be retreived ', file_name)
-                # Add to counter
-                fail_counter += 1
-
-                # Open text file and append filename and url
-                fail_text = open("failed.txt", "a")
-                fail_text.writelines(file_name + "," + page1 + "\n")
-                fail_text.close()
-
-                # Pause for a half second to be kinder to the server
-                time.sleep(1)
 
         # Print statement to confirm quantity of successful downloads
         if (fail_counter == 0):
@@ -107,7 +109,6 @@ def image_downloader(file: object):
 
 
 if __name__ == '__main__':
-#    input_file = input("Input the collectionSlug.csv with two values: record_id,url: ")
-#    input_file = input_file.strip('\"')
-     input_file = "C:\\Users\\Nicole Lawrence\\Desktop\\thumbnails\\geusc\\962f7m0d8p-cor.csv"
-     image_downloader(input_file)
+    input_file = input("Input the collectionSlug.csv with two values: record_id,url: ")
+    input_file = input_file.strip('\"')
+    image_downloader(input_file)
