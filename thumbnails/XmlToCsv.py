@@ -224,11 +224,7 @@ for f in files:
             repo = "youtube"
             mods = modifications(repo, edm_is_shown_by)
             urls = mods.repoWork()
-        elif "ghn" in edm_is_shown_by:
-            repo = "ghn"
-            mods = modifications(repo, edm_is_shown_by)
-            urls = mods.repoWork()
-        elif "gahistoricnewspapers" in edm_is_shown_by:
+        elif "ghn" in edm_is_shown_by or "gahistoricnewspapers" in edm_is_shown_by:
             repo = "ghn"
             mods = modifications(repo, edm_is_shown_by)
             urls = mods.repoWork()
@@ -236,7 +232,7 @@ for f in files:
             repo = "dlg"
             mods = modifications(repo, edm_is_shown_by)
             urls = mods.repoWork()
-        elif "geusc" in repo:
+        elif "geusc" in repo or "emt" in repo:
             repo = "geusc"
             mods = modifications(repo, iiif_partner_url)
             urls = mods.repoWork()
