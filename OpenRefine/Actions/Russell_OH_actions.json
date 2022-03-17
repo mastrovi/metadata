@@ -1,0 +1,145 @@
+[
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - dc:type",
+    "newColumnName": "dcterms_type",
+    "description": "Rename column _ - dc:type to dcterms_type"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "dcterms_type",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "moving image"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "MovingImage"
+      }
+    ],
+    "description": "Mass edit cells in column dcterms_type"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "dcterms_type",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "sound recording"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Sound"
+      }
+    ],
+    "description": "Mass edit cells in column dcterms_type"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "dcterms_type",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "text"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Text"
+      }
+    ],
+    "description": "Mass edit cells in column dcterms_type"
+  },
+  {
+    "op": "core/multivalued-cell-join",
+    "columnName": "dcterms_type",
+    "keyColumnName": "dcterms_type",
+    "separator": "||",
+    "description": "Join multi-valued cells in column dcterms_type"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - dc:title",
+    "newColumnName": "dcterms_title",
+    "description": "Rename column _ - dc:title to dcterms_title"
+  },
+  {
+    "op": "core/multivalued-cell-join",
+    "columnName": "dcterms_title",
+    "keyColumnName": "dcterms_type",
+    "separator": "||",
+    "description": "Join multi-valued cells in column dcterms_title"
+  },
+  {
+    "op": "core/multivalued-cell-join",
+    "columnName": "_ - dc:extent",
+    "keyColumnName": "dcterms_type",
+    "separator": "||",
+    "description": "Join multi-valued cells in column _ - dc:extent"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - dc:extent",
+    "newColumnName": "dcterms_extent",
+    "description": "Rename column _ - dc:extent to dcterms_extent"
+  },
+  {
+    "op": "core/multivalued-cell-join",
+    "columnName": "_ - dc:language",
+    "keyColumnName": "dcterms_type",
+    "separator": "||",
+    "description": "Join multi-valued cells in column _ - dc:language"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - dc:language",
+    "newColumnName": "dcterms_language",
+    "description": "Rename column _ - dc:language to dcterms_language"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - dc:rights",
+    "newColumnName": "dlg_local_right",
+    "description": "Rename column _ - dc:rights to dlg_local_right"
+  },
+  {
+    "op": "core/multivalued-cell-join",
+    "columnName": "_ - dc:bibliographicCitation",
+    "keyColumnName": "dcterms_type",
+    "separator": "||",
+    "description": "Join multi-valued cells in column _ - dc:bibliographicCitation"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - dc:bibliographicCitation",
+    "newColumnName": "dcterms_bibliographic_citation",
+    "description": "Rename column _ - dc:bibliographicCitation to dcterms_bibliographic_citation"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - dc:isShownAt",
+    "newColumnName": "edm_is_shown_at",
+    "description": "Rename column _ - dc:isShownAt to edm_is_shown_at"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "_ - dc:coverageSpatial",
+    "newColumnName": "dcterms_spatial",
+    "description": "Rename column _ - dc:coverageSpatial to dcterms_spatial"
+  }
+]
