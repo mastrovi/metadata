@@ -1,0 +1,107 @@
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "slug",
+    "expression": "grel:true",
+    "onError": "set-to-blank",
+    "newColumnName": "public",
+    "columnInsertIndex": 1,
+    "description": "Create column public at index 1 based on column slug using expression grel:true"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+
+    },
+    "baseColumnName": "public",
+    "expression": "grel:value",
+    "onError": "set-to-blank",
+    "newColumnName": "dpla",
+    "columnInsertIndex": 2,
+    "description": "Create column dpla at index 2 based on column public using expression grel:value"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "dpla",
+    "expression": "grel:false",
+    "onError": "set-to-blank",
+    "newColumnName": "local",
+    "columnInsertIndex": 3,
+    "description": "Create column local at index 3 based on column dpla using expression grel:false"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "local",
+    "expression": "grel:\"change me\"",
+    "onError": "set-to-blank",
+    "newColumnName": "collection",
+    "columnInsertIndex": 4,
+    "description": "Create column collection at index 4 based on column local using expression grel:\"change me\""
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "collection",
+    "expression": "grel:\"change me\"",
+    "onError": "set-to-blank",
+    "newColumnName": "portal",
+    "columnInsertIndex": 5,
+    "description": "Create column portal at index 5 based on column collection using expression grel:\"change me\""
+  }
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "slug",
+    "expression": "grel:\"https://digital.library.emory.edu/purl/\" + value",
+    "onError": "set-to-blank",
+    "newColumnName": "edm_is_shown_at",
+    "columnInsertIndex": 1,
+    "description": "Create column edm_is_shown_at at index 1 based on column slug using expression grel:\"https://digital.library.emory.edu/purl/\" + value"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "slug",
+    "expression": "grel:\"https://curate.library.emory.edu/iiif/\" + value + \"/manifest?manifest=https://curate.library.emory.edu/iiif/\" + value + \"/manifest\"",
+    "onError": "set-to-blank",
+    "newColumnName": "iiif_partner_url",
+    "columnInsertIndex": 1,
+    "description": "Create column iiif_partner_url at index 1 based on column slug using expression grel:\"https://curate.library.emory.edu/iiif/\" + value + \"/manifest?manifest=https://curate.library.emory.edu/iiif/\" + value + \"/manifest\""
+  }
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "baseColumnName": "dcterms_type",
+    "expression": "grel:\"image/jpeg\"",
+    "onError": "set-to-blank",
+    "newColumnName": "dc_format",
+    "columnInsertIndex": 10,
+    "description": "Create column dc_format at index 10 based on column dcterms_type using expression grel:\"image/jpeg\""
+  }
+]

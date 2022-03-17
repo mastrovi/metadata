@@ -48,7 +48,7 @@ def image_downloader(file: object):
             r = requests.get(url1, stream=True)
             manifest = r.json()
             try:
-                page1 = manifest['sequences'][0]['canvases'][0]['images'][0]['resource']['@id']
+                page1 = manifest['sequences'][0]['canvases'][1]['images'][0]['resource']['@id']
 
                 # Check if the first page url responds and if so, do work
                 firstImage = requests.get(page1, headers={'Referer': page1}, stream=True)
@@ -90,7 +90,7 @@ def image_downloader(file: object):
 
                 # Open text file and append filename and url
                 fail_text = open("failed.txt", "a")
-                fail_text.writelines(file_name + "," + file_name + "\n")
+                fail_text.writelines(file_name + "," + url1 + "\n")
                 fail_text.close()
 
                 # Pause for a half second to be kinder to the server
