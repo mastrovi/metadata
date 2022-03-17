@@ -5,7 +5,8 @@ save_location = input("Enter the directory to save the xml ")
 file_path = save_location + '\harvest.xml'
 
 # -- Set harvest URL
-sickle = Sickle('https://archivesspace.thebreman.org/oai/')
+base_url = input("Enter the OAI base url")
+sickle = Sickle(base_url)
 
 # -- Create record file(s)
 f = open(file_path, 'w+', encoding="utf-8")
