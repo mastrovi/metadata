@@ -1,11 +1,11 @@
 from sickle import Sickle
 
 # -- Set file save location
-save_location = input("Enter the directory to save the xml ")
+save_location = input("Enter the directory to save the xml: ")
 file_path = save_location + '\harvest.xml'
 
 # -- Set harvest URL
-base_url = input("Enter the OAI base url")
+base_url = input("Enter the OAI base url: ")
 sickle = Sickle(base_url)
 
 # -- Create record file(s)
@@ -17,10 +17,9 @@ print("<records>", file=f)
 
 # -- Set metadata prefix and set
 records = sickle.ListRecords(
-           **{'metadataPrefix':'oai_ead',
-           'from':'1999-01-01',
-         'set':'collection',
-           'ignore_deleted':'True'
+           **{'metadataPrefix':'oai_qdc',
+              'set':'abarr',
+              'ignore_deleted':'True'
            })
 
 for rec in records:
