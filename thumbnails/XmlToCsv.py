@@ -161,6 +161,11 @@ class modifications(object):
         url2 = url2_repl2.replace("http://hdl.handle.net/", "https://ursa.mercer.edu/")
         return (url, url2)
 
+    def nge_replace(self):
+        url = self.edm_is_shown_at
+        url2 = self.edm_is_shown_at
+        return (url, url2)
+
     def valdosta_replace(self):
         url_repl1 = edm_is_shown_at.replace("https://hdl.handle.net/", "https://vtext.valdosta.edu/xmlui/handle/")
         url = url_repl1.replace("http://hdl.handle.net/", "https://vtext.valdosta.edu/xmlui/handle/")
@@ -210,11 +215,14 @@ for f in files:
         coll = item.find("collection/record_id").text
         slug = item.find("slug").text
         edm_is_shown_at = item.find("edm_is_shown_at/edm_is_shown_at").text
-        iiif_partner_url = item.find("iiif_partner_url").text
         try:
             edm_is_shown_by = item.find("edm_is_shown_by/edm_is_shown_by").text
         except:
             edm_is_shown_by = "none"
+        try:
+            iiif_partner_url = item.find("iiif_partner_url").text
+        except:
+            iiif_partner_url = "none"
         repo = coll.split('_')[0]
         if "-" in repo:
             repo = repo.replace("-","")

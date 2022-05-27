@@ -1,5 +1,5 @@
 import pandas as pd
-import img_dl_cdm, img_dl_digitalcommons, img_dl_dspace, img_dl_generic, img_dl_iiif_manifest, img_dl_omeka, img_dl_islandora
+import img_dl_cdm, img_dl_digitalcommons, img_dl_dspace, img_dl_generic, img_dl_iiif_manifest, img_dl_omeka, img_dl_islandora, img_dl_wp
 
 # repos and their DAMS
 repo_dams = {
@@ -24,6 +24,8 @@ repo_dams = {
     'fcs' : img_dl_omeka,
     'hbcula' : img_dl_cdm,
     'mercer' : img_dl_dspace,
+    'nge' : img_dl_wp,
+    'ugalaw' : img_dl_digitalcommons,
     'valdosta' : img_dl_dspace,
     'vrc' : img_dl_islandora
 }
