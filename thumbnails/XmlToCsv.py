@@ -161,6 +161,11 @@ class modifications(object):
         url2 = url2_repl2.replace("http://hdl.handle.net/", "https://ursa.mercer.edu/")
         return (url, url2)
 
+    def mum_replace(self):
+        url = self.edm_is_shown_at
+        url2 = self.edm_is_shown_at
+        return (url, url2)
+
     def nge_replace(self):
         url = self.edm_is_shown_at
         url2 = self.edm_is_shown_at

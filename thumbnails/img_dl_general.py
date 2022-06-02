@@ -24,6 +24,7 @@ repo_dams = {
     'fcs' : img_dl_omeka,
     'hbcula' : img_dl_cdm,
     'mercer' : img_dl_dspace,
+    'mum' : img_dl_digitalcommons,
     'nge' : img_dl_wp,
     'ugalaw' : img_dl_digitalcommons,
     'valdosta' : img_dl_dspace,

@@ -1,4 +1,4 @@
-import os, requests, csv, shutil, time, mimetypes
+import os, requests, csv, shutil, time, mimetypes, certifi, ssl
 from lxml import html
 import urllib.request
 
@@ -51,86 +51,68 @@ def image_downloader(file: object):
             if r.status_code == 200:
                 extension = mimetypes.guess_extension(r.headers.get('content-type', '').split(';')[0])
                 # print(extension)
-                full_name = file_name + extension
+                if extension != ".html":
+                    full_name = file_name + extension
 
-                # Set decode_content value to True, otherwise the downloaded image file's size will be zero.
-                r.raw.decode_content = True
+                    # Set decode_content value to True, otherwise the downloaded image file's size will be zero.
+                    r.raw.decode_content = True
 
-                # Open a local file with wb ( write binary ) permission.
-                with open(full_name, 'wb') as f:
-                    shutil.copyfileobj(r.raw, f)
+                    # Open a local file with wb ( write binary ) permission.
+                    with open(full_name, 'wb') as f:
+                        shutil.copyfileobj(r.raw, f)
 
-                # Add to counter
-                success_counter += 1
-                print(file_name, ' successfully downloaded')
+                    # Add to counter
+                    success_counter += 1
+                    print(file_name, ' successfully downloaded')
 
-                # Pause for a half second to be kinder to the server
-                time.sleep(1)
+                    # Pause for a half second to be kinder to the server
+                    time.sleep(1)
 
-            else:
-                doc = urllib.request.urlopen(url2)
-                page = html.parse(doc)
+                else:
+                    context = ssl.create_default_context(cafile=certifi.where())
+                    doc = urllib.request.urlopen(url2, context=context)
+                    page = html.parse(doc)
 
-                try:
-                    # Try to get medium size image
-                    full_image_url = page.xpath("//div[@class='aside download-button']/a[@id='img-med']/@href")[0]
-                except:
                     try:
-                        # Try to get thumb size image
-                        thumb_image_url = page.xpath("//div[@id='cover-img']/img/@src")[0]
+                        # Try to get thumb from meta tags
+                        full_image_url = page.xpath("//meta[@property='og:image']/@content")[0]
                     except:
                         try:
-                            # Try to get full object
-                            full_image_url = page.xpath("//div[@class='aside download-button']/a/@href")[0]
+                            # Try to get medium size image
+                            full_image_url = page.xpath("//div[@class='aside download-button']/a[@id='img-med']/@href")[0]
                         except:
                             try:
-                                # Alternate full object path
-                                full_image_url = page.xpath("//a[@id='alpha-pdf']/@href")[0]
+                                # Try to get thumb size image
+                                thumb_image_url = page.xpath("//div[@id='cover-img']/img/@src")[0]
                             except:
-                                print('Object Couldn\'t be retreived ', file_name)
-                                # Add to counter
-                                fail_counter += 1
+                                try:
+                                    # Try to get full object
+                                    full_image_url = page.xpath("//div[@class='aside download-button']/a/@href")[0]
+                                except:
+                                    try:
+                                        # Alternate full object path
+                                        full_image_url = page.xpath("//a[@id='alpha-pdf']/@href")[0]
+                                    except:
+                                        print('Object Couldn\'t be retreived ', file_name)
+                                        # Add to counter
+                                        fail_counter += 1
 
-                                # Open text file and append filename and url
-                                fail_text = open("failed.txt", "a")
-                                fail_text.writelines(file_name + "," + url2 + "\n")
-                                fail_text.close()
+                                        # Open text file and append filename and url
+                                        fail_text = open("failed.txt", "a")
+                                        fail_text.writelines(file_name + "," + url2 + "\n")
+                                        fail_text.close()
 
-                                # Pause for a second to be kinder to the server
-                                time.sleep(1)
+                                        # Pause for a second to be kinder to the server
+                                        time.sleep(1)
 
-                try:
-                    full_image_url
-                    r = requests.get(full_image_url, stream=True)
-
-                    if r.ok:
-                        extension = mimetypes.guess_extension(r.headers.get('content-type', '').split(';')[0])
-                        # print(extension)
-                        full_name = "full_" + file_name + extension
-                        print("Downloading: ", full_name)
-
-                        # Set decode_content value to True, otherwise the downloaded image file's size will be zero.
-                        r.raw.decode_content = True
-
-                        # Open a local file with wb ( write binary ) permission.
-                        with open(full_name, 'wb') as f:
-                            shutil.copyfileobj(r.raw, f)
-
-                        # Add to counter
-                        success_counter += 1
-                        #print(full_name, ' successfully downloaded')
-
-                        # Pause for a second to be kinder to the server
-                        time.sleep(1)
-                except:
                     try:
-                        thumb_image_url
-                        r = requests.get(thumb_image_url, stream=True)
+                        full_image_url
+                        r = requests.get(full_image_url, stream=True)
 
                         if r.ok:
                             extension = mimetypes.guess_extension(r.headers.get('content-type', '').split(';')[0])
                             # print(extension)
-                            full_name = file_name + extension
+                            full_name = "full_" + file_name + extension
                             print("Downloading: ", full_name)
 
                             # Set decode_content value to True, otherwise the downloaded image file's size will be zero.
@@ -142,12 +124,36 @@ def image_downloader(file: object):
 
                             # Add to counter
                             success_counter += 1
-                            # print(full_name, ' successfully downloaded')
+                            #print(full_name, ' successfully downloaded')
 
                             # Pause for a second to be kinder to the server
                             time.sleep(1)
                     except:
-                        pass
+                        try:
+                            thumb_image_url
+                            r = requests.get(thumb_image_url, stream=True)
+
+                            if r.ok:
+                                extension = mimetypes.guess_extension(r.headers.get('content-type', '').split(';')[0])
+                                # print(extension)
+                                full_name = file_name + extension
+                                print("Downloading: ", full_name)
+
+                                # Set decode_content value to True, otherwise the downloaded image file's size will be zero.
+                                r.raw.decode_content = True
+
+                                # Open a local file with wb ( write binary ) permission.
+                                with open(full_name, 'wb') as f:
+                                    shutil.copyfileobj(r.raw, f)
+
+                                # Add to counter
+                                success_counter += 1
+                                # print(full_name, ' successfully downloaded')
+
+                                # Pause for a second to be kinder to the server
+                                time.sleep(1)
+                        except:
+                            pass
 
         # Print statement to confirm quantity of successful downloads
         if (fail_counter == 0):
