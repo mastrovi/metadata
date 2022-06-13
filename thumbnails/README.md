@@ -4,7 +4,7 @@
    * Will transform ActiveXML from dlgadmin to a csv with record_id, url, url2
    * Url is direct path to thumbnail
    * Url2 is path to object
-   * Urls mau be the same if there is no path to thumbnails
+   * Urls may be the same if there is no path to thumbnails
 2. Reconciliation
    * Counts the number of records from a dlg-thumbnails directory listing
 
