@@ -23,6 +23,7 @@ repo_dams = {
     'gsu' : img_dl_cdm,
     'fcs' : img_dl_omeka,
     'hbcula' : img_dl_cdm,
+    'int' : img_dl_generic,
     'mercer' : img_dl_dspace,
     'mum' : img_dl_digitalcommons,
     'nge' : img_dl_wp,

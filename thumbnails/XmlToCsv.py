@@ -152,6 +152,11 @@ class modifications(object):
         url2 = self.edm_is_shown_at.replace('http://hbcudigitallibrary.auctr.edu/cdm/ref/', 'https://hbcudigitallibrary.auctr.edu/digital/')
         return (url, url2)
 
+    def int_replace(self):
+        url = self.edm_is_shown_at + "/thumbnail/"
+        url2 = self.edm_is_shown_at
+        return (url, url2)
+
     def mercer_replace(self):
         url_repl1 = self.edm_is_shown_at.replace("https://hdl.handle.net/", "https://ursa.mercer.edu/")
         url_repl2 = url_repl1.replace("http://hdl.handle.net/", "https://ursa.mercer.edu/")
