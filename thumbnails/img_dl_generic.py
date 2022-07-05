@@ -65,7 +65,7 @@ def image_downloader(file: object):
                 print(file_name, ' successfully downloaded')
 
                 # Pause for a half second to be kinder to the server
-                time.sleep(2)
+                time.sleep(1)
 
             else:
                 print('Image Couldn\'t be retreived ', file_name)
