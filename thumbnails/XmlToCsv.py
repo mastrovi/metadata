@@ -157,6 +157,11 @@ class modifications(object):
         url2 = self.edm_is_shown_at
         return (url, url2)
 
+    def lru_replace(self):
+        url = self.edm_is_shown_at + "/datastream/TN/view"
+        url2 = self.edm_is_shown_at
+        return (url, url2)
+
     def mercer_replace(self):
         url_repl1 = self.edm_is_shown_at.replace("https://hdl.handle.net/", "https://ursa.mercer.edu/")
         url_repl2 = url_repl1.replace("http://hdl.handle.net/", "https://ursa.mercer.edu/")
@@ -180,6 +185,14 @@ class modifications(object):
          url = self.edm_is_shown_at + "/default.jpg"
          url2 = self.edm_is_shown_at
          return (url, url2)
+
+    def suc_replace(self):
+        url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
+        url_rpl2 = url_rpl1.replace('https://digital.tcl.sc.edu/digital/collection/', 'https://digital.tcl.sc.edu/digital/iiif/')
+        url_rpl3 = url_rpl2.replace('http://cdm17173.contentdm.oclc.org/cdm/ref/collection/', 'https://digital.tcl.sc.edu/digital/iiif/')
+        url = url_rpl3.replace('/id', '')
+        url2 = self.edm_is_shown_at
+        return (url, url2)
 
     def tws_replace(self):
         url_repl1 = edm_is_shown_at.replace("https://hdl.handle.net/", "http://dlynx.rhodes.edu:8080/jspui/handle/")

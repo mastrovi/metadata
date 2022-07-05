@@ -88,7 +88,7 @@ def image_downloader(file: object):
                                     time.sleep(1)
                 try:
                     image_url
-                    r = requests.get(image_url, stream=True)
+                    r = requests.get(image_url, stream=True, timeout=3)
 
                     if r.ok:
                         extension = mimetypes.guess_extension(r.headers.get('content-type', '').split(';')[0])
@@ -112,7 +112,7 @@ def image_downloader(file: object):
                 except:
                     try:
                         full_image_url
-                        r = requests.get(full_image_url, stream=True)
+                        r = requests.get(full_image_url, stream=True, timeout=3)
 
                         if r.ok:
                             extension = mimetypes.guess_extension(r.headers.get('content-type', '').split(';')[0])
