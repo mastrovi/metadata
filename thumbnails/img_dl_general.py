@@ -27,6 +27,7 @@ repo_dams = {
     'mercer' : img_dl_dspace,
     'mum' : img_dl_digitalcommons,
     'nge' : img_dl_wp,
+    'tws' : img_dl_dspace,
     'ugalaw' : img_dl_digitalcommons,
     'valdosta' : img_dl_dspace,
     'vrc' : img_dl_islandora
