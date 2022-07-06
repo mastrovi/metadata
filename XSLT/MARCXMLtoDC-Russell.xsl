@@ -140,49 +140,49 @@
 		</xsl:for-each>
 		<xsl:for-each select="marc:datafield[@tag=610]">
 			<dc:subject>
-				<xsl:call-template name="subfieldSelect">
+				<xsl:call-template name="subfieldSelectDash">
 					<xsl:with-param name="codes">abcdq</xsl:with-param>
 				</xsl:call-template>
 			</dc:subject>
 		</xsl:for-each>
 		<xsl:for-each select="marc:datafield[@tag=611]">
 			<dc:subject>
-				<xsl:call-template name="subfieldSelect">
+				<xsl:call-template name="subfieldSelectDash">
 					<xsl:with-param name="codes">abcdq</xsl:with-param>
 				</xsl:call-template>
 			</dc:subject>
 		</xsl:for-each>
 		<xsl:for-each select="marc:datafield[@tag=630]">
 			<dc:subject>
-				<xsl:call-template name="subfieldSelect">
+				<xsl:call-template name="subfieldSelectDash">
 					<xsl:with-param name="codes">abcdq</xsl:with-param>
 				</xsl:call-template>
 			</dc:subject>
 		</xsl:for-each>
 		<xsl:for-each select="marc:datafield[@tag=650]">
 			<dc:subject>
-				<xsl:call-template name="subfieldSelect">
+				<xsl:call-template name="subfieldSelectDash">
 					<xsl:with-param name="codes">abcdqxvz</xsl:with-param>
 				</xsl:call-template>
 			</dc:subject>
 		</xsl:for-each>
 				<xsl:for-each select="marc:datafield[@tag=651]">
 			<dc:subject>
-				<xsl:call-template name="subfieldSelect">
+				<xsl:call-template name="subfieldSelectDash">
 					<xsl:with-param name="codes">abcdqxvz</xsl:with-param>
 				</xsl:call-template>
 			</dc:subject>
 		</xsl:for-each>
 		<xsl:for-each select="marc:datafield[@tag=653]">
 			<dc:subject>
-				<xsl:call-template name="subfieldSelect">
+				<xsl:call-template name="subfieldSelectDash">
 					<xsl:with-param name="codes">abcdq</xsl:with-param>
 				</xsl:call-template>
 			</dc:subject>
 		</xsl:for-each>
 		<xsl:for-each select="marc:datafield[@tag=752]">
 			<dc:coverage>
-				<xsl:call-template name="subfieldSelect">
+				<xsl:call-template name="subfieldSelectDash">
 					<xsl:with-param name="codes">abcd</xsl:with-param>
 				</xsl:call-template>
 			</dc:coverage>
