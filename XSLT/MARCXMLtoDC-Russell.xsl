@@ -231,6 +231,51 @@
 		</xsl:for-each>
 		<!--</oai_dc:dc>-->
 	</xsl:template>
+
+	<xsl:template name="subfieldSelect">
+		<xsl:param name="codes">abcdefghijklmnopqrstuvwxyz</xsl:param>
+		<xsl:param name="delimeter">
+		<xsl:text> </xsl:text>
+		</xsl:param>
+		<xsl:variable name="str">
+		<xsl:for-each select="marc:subfield">
+		<xsl:if test="contains($codes, @code)">
+		<xsl:value-of select="text()"/>
+		<xsl:value-of select="$delimeter"/>
+		</xsl:if>
+		</xsl:for-each>
+		</xsl:variable>
+		<xsl:value-of select="substring($str,1,string-length($str)-string-length($delimeter))"/>
+		</xsl:template>
+		<xsl:template name="buildSpaces">
+		<xsl:param name="spaces"/>
+		<xsl:param name="char">
+		<xsl:text> </xsl:text>
+		</xsl:param>
+		<xsl:if test="$spaces>0">
+		<xsl:value-of select="$char"/>
+		<xsl:call-template name="buildSpaces">
+		<xsl:with-param name="spaces" select="$spaces - 1"/>
+		<xsl:with-param name="char" select="$char"/>
+		</xsl:call-template>
+		</xsl:if>
+		</xsl:template>	<xsl:template name="subfieldSelectDash">
+		<xsl:param name="codes">abcdefghijklmnopqrstuvwxyz</xsl:param>
+		<xsl:param name="delimeter">
+		<xsl:text>--</xsl:text>
+		</xsl:param>
+		<xsl:variable name="str">
+		<xsl:for-each select="marc:subfield">
+		<xsl:if test="contains($codes, @code)">
+		<xsl:value-of select="text()"/>
+		<xsl:value-of select="$delimeter"/>
+		</xsl:if>
+		</xsl:for-each>
+		</xsl:variable>
+		<xsl:value-of select="substring($str,1,string-length($str)-string-length($delimeter))"/>
+		</xsl:template>
+		</xsl:stylesheet>
+
 </xsl:stylesheet>
 
 <!-- Stylus Studio meta-information - (c) 2004-2005. Progress Software Corporation. All rights reserved.

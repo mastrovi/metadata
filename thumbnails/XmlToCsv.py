@@ -67,6 +67,11 @@ class modifications(object):
         url2 = self.edm_is_shown_at
         return (url, url2)
 
+    def dhs_replace(self):
+        url = self.edm_is_shown_at
+        url2 = self.edm_is_shown_at
+        return (url, url2)
+
     def dlg_replace(self):
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url = re.sub('/record/(.*)_(.*)_(.*)#item', r'/images/iiif/2/dlg%2F\1%2F\2%2F\1_\2_\3%2F\1_\2_\3-00001.jp2', url_rpl1)

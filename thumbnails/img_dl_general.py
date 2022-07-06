@@ -10,6 +10,7 @@ repo_dams = {
     'bcri' : img_dl_generic,
     'carter' : img_dl_generic,
     'columbus' : img_dl_omeka,
+    'dhs' : img_dl_omeka,
     'emo' : img_dl_iiif_manifest,
     'emt' : img_dl_iiif_manifest,
     'gbc' : img_dl_omeka,
