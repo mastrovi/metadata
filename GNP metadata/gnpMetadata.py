@@ -9,9 +9,9 @@ locations = {'sn90052391' : "Douglasville GA"
 }
 
 # Ask for file
-#input_file = input("What excel file would you like to run this on? ")
-#file = input_file.strip('\"')
-file = "C:\\Users\\Nicole Lawrence\\OneDrive - University of Georgia\\Documents\\Metadata\\gnp metadata test\\bcn2009.xls"
+input_file = input("What excel file would you like to run this on? ")
+file = input_file.strip('\"')
+
 
 
 # Gets directory of input excel and changes to it to do work
