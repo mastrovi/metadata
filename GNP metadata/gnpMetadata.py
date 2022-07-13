@@ -4,11 +4,15 @@ import pandas as pd
 titles ={'sn90052391' : "The Banks County News"
 }
 
+# Dictionary of tiles using LCCN ad the key
 locations = {'sn90052391' : "Douglasville GA"
 }
 
-input_file = input("What excel file would you like to run this on? ")
-file = input_file.strip('\"')
+# Ask for file
+#input_file = input("What excel file would you like to run this on? ")
+#file = input_file.strip('\"')
+file = "C:\\Users\\Nicole Lawrence\\OneDrive - University of Georgia\\Documents\\Metadata\\gnp metadata test\\bcn2009.xls"
+
 
 # Gets directory of input excel and changes to it to do work
 work_dir = os.path.dirname(file)
@@ -17,6 +21,8 @@ os.chdir(work_dir)
 # Gets filename, remove extension and append metadata.xslx, create batchID from filename
 base = os.path.basename(file)
 metadata_file = os.path.splitext(base)[0] + "_metadata.xlsx"
+xml_file = os.path.splitext(base)[0] + ".xml"
+batch_file = os.path.splitext(base)[0] + "_rename.bat"
 batchID = os.path.splitext(base)[0]
 
 # Read Excel
@@ -102,22 +108,20 @@ for item in range(items):
 pageLevelDf = pd.DataFrame(rows_list)
 pageLevelDf['Reel_Sequence_Number'] = pageLevelDf.index + 1
 
-#page_level_df['number'] = page_level_df['number'].map(str)
-#print(pageLevelDf)
-
-# Group by id and spit out dict of id : page array
-#page_dict = page_level_df.groupby(['id']).apply(lambda r: r[['number']].to_dict(orient='records'))
-
-# Add the page number column to the df
-#df['pages'] = df['id'].map(page_dict)
-
 # Export to new Excel file
-#with pd.ExcelWriter(metadata_file) as writer:
-#    df.to_excel(writer, index=False)
-
 with pd.ExcelWriter(metadata_file) as writer:
     pageLevelDf.to_excel(writer, index=False)
 
+# Export rename column to .bat file
+with open(batch_file, 'w') as f:
+    f.write(pageLevelDf['File_Rename'].str.cat(sep='\n'))
+
+# Drop rename column
+pageLevelDf.drop(columns="File_Rename", inplace=True)
+
+# Export to XML
+with open(xml_file, 'w') as f:
+    pageLevelDf.to_xml(xml_file, index=False, root_name="root")
 
 
 

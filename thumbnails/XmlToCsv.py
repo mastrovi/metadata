@@ -206,6 +206,11 @@ class modifications(object):
         url2 = url2_repl1.replace("http://hdl.handle.net/", "http://dlynx.rhodes.edu:8080/jspui/handle/")
         return (url, url2)
 
+    def ugalaw_replace(self):
+         url = self.edm_is_shown_at + "/thumbnail.jpg"
+         url2 = self.edm_is_shown_at
+         return (url, url2)
+
     def valdosta_replace(self):
         url_repl1 = edm_is_shown_at.replace("https://hdl.handle.net/", "https://vtext.valdosta.edu/xmlui/handle/")
         url = url_repl1.replace("http://hdl.handle.net/", "https://vtext.valdosta.edu/xmlui/handle/")
