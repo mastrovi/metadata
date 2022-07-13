@@ -106,7 +106,6 @@ def image_downloader(file: object):
                                         time.sleep(1)
 
                     try:
-                        full_image_url
                         r = requests.get(full_image_url, stream=True)
 
                         if r.ok:
@@ -130,7 +129,7 @@ def image_downloader(file: object):
                             time.sleep(1)
                     except:
                         try:
-                            thumb_image_url
+                            thumb_image_url = url2 + "/thumbnail.jpg"
                             r = requests.get(thumb_image_url, stream=True)
 
                             if r.ok:
