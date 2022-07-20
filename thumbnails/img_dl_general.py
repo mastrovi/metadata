@@ -32,6 +32,7 @@ repo_dams = {
     'suc' : img_dl_cdm,
     'tws' : img_dl_dspace,
     'ugalaw' : img_dl_digitalcommons,
+    'usm' : img_dl_generic,
     'valdosta' : img_dl_dspace,
     'vrc' : img_dl_islandora
 }

@@ -45,7 +45,7 @@ def image_downloader(file: object):
             file_url = row["url"]
 
             # Open the url file, set stream to True, this will return the stream content.
-            r = requests.get(file_url, headers={'Referer': file_url}, stream=True, timeout=3)
+            r = requests.get(file_url, headers={'Referer': file_url}, stream=True, timeout=10)
 
             # Check if the image was retrieved successfully
             if r.status_code == 200:

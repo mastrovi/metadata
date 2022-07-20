@@ -211,6 +211,11 @@ class modifications(object):
          url2 = self.edm_is_shown_at
          return (url, url2)
 
+    def usm_replace(self):
+        url = self.edm_is_shown_at.replace("https://usm.access.preservica.com/uncategorized/", "https://usm.access.preservica.com/download/thumbnail/")
+        url2 = self.edm_is_shown_at
+        return (url, url2)
+
     def valdosta_replace(self):
         url_repl1 = edm_is_shown_at.replace("https://hdl.handle.net/", "https://vtext.valdosta.edu/xmlui/handle/")
         url = url_repl1.replace("http://hdl.handle.net/", "https://vtext.valdosta.edu/xmlui/handle/")
