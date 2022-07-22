@@ -157,16 +157,6 @@ class modifications(object):
         url2 = self.edm_is_shown_at
         return (url, url2)
 
-    def ghn_replace(self):
-        # Reformatted urls should look like:
-        # url =
-        # url2 =
-        url_rpl1 = self.edm_is_shown_at + "/"
-        url_rpl2 = url_rpl1.replace('http://dlg.galileo.usg.edu/do:dlg_ghn_', 'https://gahistoricnewspapers.galileo.usg.edu/lccn/')
-        url = re.sub('-(\d\d\d\d-\d\d-\d\d)-', r'/\1/', url_rpl2)
-        url2 = self.edm_is_shown_at
-        return (url, url2)
-
     def gkj_replace(self):
         # Reformatted urls should look like:
         # url =
