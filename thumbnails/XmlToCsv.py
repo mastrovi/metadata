@@ -178,25 +178,25 @@ class modifications(object):
         return (url, url2)
 
     def gnd_replace(self):
-        # Reformatted urls should look like:
-        # url =
-        # url2 =
+        # Only first url modified, urls should look like:
+        # url = http://digitalcommons.northgeorgia.edu/corps_photos/1/preview.jpg
+        # url2 = http://digitalcommons.northgeorgia.edu/corps_photos/1
         url = self.edm_is_shown_at + "/preview.jpg"
         url2 = self.edm_is_shown_at
         return (url, url2)
 
     def gpm_replace(self):
-        # Reformatted urls should look like:
-        # url =
-        # url2 =
+        # Only first url modified, urls should look like:
+        # url = https://digitalcommons.georgiasouthern.edu/art-savannah-lane/1/preview.jpg
+        # url2 = https://digitalcommons.georgiasouthern.edu/art-savannah-lane/1
         url = self.edm_is_shown_at + "/preview.jpg"
         url2 = self.edm_is_shown_at
         return (url, url2)
 
     def gpmhend_replace(self):
-        # Reformatted urls should look like:
-        # url =
-        # url2 =
+        # Only first url modified, urls should look like:
+        # url = https://digitalcommons.georgiasouthern.edu/george-anne/2425/preview.jpg
+        # url2 = https://digitalcommons.georgiasouthern.edu/george-anne/2425
         url = self.edm_is_shown_at + "/preview.jpg"
         url2 = self.edm_is_shown_at
         return (url, url2)
@@ -213,8 +213,8 @@ class modifications(object):
 
     def hbcula_replace(self):
         # Reformatted urls should look like:
-        # url =
-        # url2 =
+        # url = https://hbcudigitallibrary.auctr.edu/digital/iiif/nccu/0/full/300,/0/default.jpg
+        # url2 = https://hbcudigitallibrary.auctr.edu/digital/collection/nccu/id/0
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url_rpl2 = url_rpl1.replace('http://hbcudigitallibrary.auctr.edu/cdm/ref/collection/', 'https://hbcudigitallibrary.auctr.edu/digital/iiif/')
         url = url_rpl2.replace('/id', '')
@@ -222,14 +222,17 @@ class modifications(object):
         return (url, url2)
 
     def int_replace(self):
-        # Reformatted urls should look like:
-        # url =
-        # url2 =
+        # Only first url modified, urls should look like:
+        # url = https://texashistory.unt.edu/ark:/67531/metapth836709/small/
+        # url2 = https://texashistory.unt.edu/ark:/67531/metapth836709/
         url = self.edm_is_shown_at + "small/"
         url2 = self.edm_is_shown_at
         return (url, url2)
 
     def lru_replace(self):
+        # Only first url modified, urls should look like:
+        # url = https://texashistory.unt.edu/ark:/67531/metapth836709/small/
+        # url2 = https://texashistory.unt.edu/ark:/67531/metapth836709/
         url = self.edm_is_shown_at + "/datastream/TN/view"
         url2 = self.edm_is_shown_at
         return (url, url2)
