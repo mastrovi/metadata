@@ -63,13 +63,11 @@ class modifications(object):
         return (url, url2)
     
     def alm_replace(self):
-        # Reformatted urls should look like:
-        # url = https://digitalcollections.libraries.ua.edu/digital/iiif/p17336coll8/0/full/300,/0/default.jpg
-        # url2 = https://digitalcollections.libraries.ua.edu/digital/collection/p17336coll8/id/0
-        url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
-        url_rpl2 = url_rpl1.replace('http://digitalcollections.libraries.ua.edu/cdm/ref/collection/', 'https://digitalcollections.libraries.ua.edu/digital/iiif/')
-        url = url_rpl2.replace('/id', '')
-        url2 = self.edm_is_shown_at.replace('http://digitalcollections.libraries.ua.edu/cdm/ref/', 'https://digitalcollections.libraries.ua.edu/digital/')
+        # Only first url modified, urls should look like:
+        # url = https://digitalcollections.libraries.ua.edu/utils/getthumbnail/collection/u0001_2008003/id/1
+        # url2 = https://digitalcollections.libraries.ua.edu/digital/collection/u0001_2008003/id/1
+        url = self.edm_is_shown_at.replace('https://digitalcollections.libraries.ua.edu/digital/', 'https://digitalcollections.libraries.ua.edu/utils/getthumbnail/')
+        url2 = self.edm_is_shown_at
         return (url, url2)
 
     def auu_replace(self):
@@ -102,8 +100,8 @@ class modifications(object):
 
     def dlg_replace(self):
         # Reformatted urls should look like:
-        # url =
-        # url2 =
+        # url = https://dlg.usg.edu/record/dlg_sanb_abbeville-1899#item/full/300,/0/default.jpg
+        # url2 = https://dlg.usg.edu/record/dlg_sanb_abbeville-1899#item
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url = re.sub('/record/(.*)_(.*)_(.*)#item', r'/images/iiif/2/dlg%2F\1%2F\2%2F\1_\2_\3%2F\1_\2_\3-00001.jp2', url_rpl1)
         url2 = self.edm_is_shown_at
