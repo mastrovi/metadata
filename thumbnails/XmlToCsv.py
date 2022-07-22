@@ -25,6 +25,9 @@ class modifications(object):
         self.edm_is_shown_at = edm_is_shown_at
         
     def aaa_replace(self):
+        # Reformatted urls should look like:
+        # url =
+        # url2 =
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url_rpl2 = url_rpl1.replace('http://content.lib.auburn.edu/cdm/ref/collection/', 'http://content.lib.auburn.edu/digital/iiif/')
         url = url_rpl2.replace('/id', '')
@@ -32,6 +35,9 @@ class modifications(object):
         return (url, url2)    
 
     def aar_replace(self):
+        # Reformatted urls should look like:
+        # url =
+        # url2 =
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url_rpl2 = url_rpl1.replace('http://digital.archives.alabama.gov/cdm/ref/collection/', 'http://digital.archives.alabama.gov/digital/iiif/')
         url = url_rpl2.replace('/id', '')
@@ -39,11 +45,17 @@ class modifications(object):
         return (url, url2)
 
     def aasu_replace(self):
+        # Reformatted urls should look like:
+        # url =
+        # url2 =
         url = self.edm_is_shown_at + "/preview.jpg"
         url2 = self.edm_is_shown_at
         return (url, url2)
     
     def alm_replace(self):
+        # Reformatted urls should look like:
+        # url =
+        # url2 =
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url_rpl2 = url_rpl1.replace('http://digitalcollections.libraries.ua.edu/cdm/ref/collection/', 'https://digitalcollections.libraries.ua.edu/digital/iiif/')
         url = url_rpl2.replace('/id', '')
@@ -51,6 +63,9 @@ class modifications(object):
         return (url, url2)
 
     def auu_replace(self):
+        # Reformatted urls should look like:
+        # url =
+        # url2 =
         url2 = re.sub('http(.*):(.*):(.*)', r'http\1:\2%3A\3', self.edm_is_shown_at)
         url_rpl1 = self.edm_is_shown_at + "/datastream/TN/view"
         url_rpl2 = url_rpl1.replace('http://hdl.handle.net/20.500.12322/', 'https://radar.auctr.edu/islandora/object/')
@@ -58,32 +73,42 @@ class modifications(object):
         return (url, url2)
 
     def carter_replace(self):
+        # No reformatting, just putting urls into the correct csv format
         url = self.edm_is_shown_at
         url2 = self.edm_is_shown_at
         return (url, url2)
 
     def columbus_replace(self):
+        # No reformatting, just putting urls into the correct csv format
         url = self.edm_is_shown_at
         url2 = self.edm_is_shown_at
         return (url, url2)
 
     def dhs_replace(self):
+        # No reformatting, just putting urls into the correct csv format
         url = self.edm_is_shown_at
         url2 = self.edm_is_shown_at
         return (url, url2)
 
     def dlg_replace(self):
+        # Reformatted urls should look like:
+        # url =
+        # url2 =
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url = re.sub('/record/(.*)_(.*)_(.*)#item', r'/images/iiif/2/dlg%2F\1%2F\2%2F\1_\2_\3%2F\1_\2_\3-00001.jp2', url_rpl1)
         url2 = self.edm_is_shown_at
         return (url, url2)
 
     def fcs_replace(self):
+        # No reformatting, just putting urls into the correct csv format
         url = self.edm_is_shown_at
         url2 = self.edm_is_shown_at
         return (url, url2)
     
     def fqr_replace(self):
+        # Reformatted urls should look like:
+        # url =
+        # url2 =
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url_rpl2 = url_rpl1.replace('http://digitalcollections.library.miami.edu/cdm/ref/collection/', 'https://digitalcollections.library.miami.edu/digital/iiif/')
         url = url_rpl2.replace('/id', '')
@@ -91,11 +116,15 @@ class modifications(object):
         return (url, url2)
     
     def gbc_replace(self):
+        # No reformatting, just putting urls into the correct csv format
         url = self.edm_is_shown_at
         url2 = self.edm_is_shown_at
         return (url, url2)
 
     def gcl_replace(self):
+        # Reformatted urls should look like:
+        # url =
+        # url2 =
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url_rpl2 = url_rpl1.replace('http://cdm17323.contentdm.oclc.org/cdm/ref/collection/', 'https://cdm17323.contentdm.oclc.org/digital/iiif/')
         url = url_rpl2.replace('/id', '')
@@ -103,6 +132,9 @@ class modifications(object):
         return (url, url2)
 
     def geh_replace(self):
+        # Reformatted urls should look like:
+        # url =
+        # url2 =
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url_rpl2 = url_rpl1.replace('http://album.atlantahistorycenter.com/cdm/ref/collection/', 'https://album.atlantahistorycenter.com/digital/iiif/')
         url = url_rpl2.replace('/id', '')
@@ -110,11 +142,15 @@ class modifications(object):
         return (url, url2)
 
     def geusc_replace(self):
+        # No reformatting, just putting urls into the correct csv format
         url = self.edm_is_shown_at
         url2 = self.edm_is_shown_at
         return (url, url2)
 
     def ghn_replace(self):
+        # Reformatted urls should look like:
+        # url =
+        # url2 =
         url_rpl1 = self.edm_is_shown_at + "/"
         url_rpl2 = url_rpl1.replace('http://dlg.galileo.usg.edu/do:dlg_ghn_', 'https://gahistoricnewspapers.galileo.usg.edu/lccn/')
         url = re.sub('-(\d\d\d\d-\d\d-\d\d)-', r'/\1/', url_rpl2)
@@ -122,6 +158,9 @@ class modifications(object):
         return (url, url2)
 
     def gkj_replace(self):
+        # Reformatted urls should look like:
+        # url =
+        # url2 =
         url_repl1 = self.edm_is_shown_at.replace("https://hdl.handle.net/", "https://soar.kennesaw.edu/")
         url = url_repl1.replace("http://hdl.handle.net/", "https://soar.kennesaw.edu/")
         url2_repl1 = self.edm_is_shown_at.replace("https://hdl.handle.net/", "https://soar.kennesaw.edu/")
@@ -129,21 +168,33 @@ class modifications(object):
         return (url, url2)
 
     def gnd_replace(self):
+        # Reformatted urls should look like:
+        # url =
+        # url2 =
         url = self.edm_is_shown_at + "/preview.jpg"
         url2 = self.edm_is_shown_at
         return (url, url2)
 
     def gpm_replace(self):
+        # Reformatted urls should look like:
+        # url =
+        # url2 =
         url = self.edm_is_shown_at + "/preview.jpg"
         url2 = self.edm_is_shown_at
         return (url, url2)
 
     def gpmhend_replace(self):
+        # Reformatted urls should look like:
+        # url =
+        # url2 =
         url = self.edm_is_shown_at + "/preview.jpg"
         url2 = self.edm_is_shown_at
         return (url, url2)
 
     def gsu_replace(self):
+        # Reformatted urls should look like:
+        # url = http://digitalcollections.library.gsu.edu/digital/iiif/gawl/511/full/300,/0/default.jpg
+        # url2 = http://digitalcollections.library.gsu.edu/digital/collection/gawl/id/511
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url_rpl2 = url_rpl1.replace('http://digitalcollections.library.gsu.edu/cdm/ref/collection/', 'http://digitalcollections.library.gsu.edu/digital/iiif/')
         url = url_rpl2.replace('/id', '')
@@ -151,6 +202,9 @@ class modifications(object):
         return (url, url2)
 
     def hbcula_replace(self):
+        # Reformatted urls should look like:
+        # url =
+        # url2 =
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url_rpl2 = url_rpl1.replace('http://hbcudigitallibrary.auctr.edu/cdm/ref/collection/', 'https://hbcudigitallibrary.auctr.edu/digital/iiif/')
         url = url_rpl2.replace('/id', '')
@@ -158,6 +212,9 @@ class modifications(object):
         return (url, url2)
 
     def int_replace(self):
+        # Reformatted urls should look like:
+        # url =
+        # url2 =
         url = self.edm_is_shown_at + "small/"
         url2 = self.edm_is_shown_at
         return (url, url2)
@@ -177,11 +234,13 @@ class modifications(object):
         return (url, url2)
 
     def mum_replace(self):
+        # No reformatting, just putting urls into the correct csv format
         url = self.edm_is_shown_at
         url2 = self.edm_is_shown_at
         return (url, url2)
 
     def nge_replace(self):
+        # No reformatting, just putting urls into the correct csv format
         url = self.edm_is_shown_at
         url2 = self.edm_is_shown_at
         return (url, url2)
@@ -207,6 +266,7 @@ class modifications(object):
         return (url, url2)
 
     def ugalaw_replace(self):
+        # No reformatting, just putting urls into the correct csv format
          url = self.edm_is_shown_at
          url2 = self.edm_is_shown_at
          return (url, url2)
