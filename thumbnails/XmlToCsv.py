@@ -259,11 +259,19 @@ class modifications(object):
         return (url, url2)
     
     def src_replace(self):
-         url = self.edm_is_shown_at + "/default.jpg"
-         url2 = self.edm_is_shown_at
-         return (url, url2)
+        # Only first url modified, urls should look like:
+        # url = https://localhistory.richlandlibrary.com/digital/iiif/p16817coll21/324/full/300,/0/default.jpg
+        # url2 = https://localhistory.richlandlibrary.com/digital/collection/p16817coll21/id/324
+        url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
+        url_rpl2 = url_rpl1.replace('https://localhistory.richlandlibrary.com/digital/collection/', 'https://localhistory.richlandlibrary.com/digital/iiif/')
+        url = url_rpl2.replace('/id', '')
+        url2 = self.edm_is_shown_at
+        return (url, url2)
 
     def suc_replace(self):
+        # Reformatted urls should look like:
+        # url = https://digital.tcl.sc.edu/digital/iiif/adamsea/12/full/300,/0/default.jpg
+        # url2 = https://digital.tcl.sc.edu/digital/collection/adamsea/id/12
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url_rpl2 = url_rpl1.replace('https://digital.tcl.sc.edu/digital/collection/', 'https://digital.tcl.sc.edu/digital/iiif/')
         url_rpl3 = url_rpl2.replace('http://cdm17173.contentdm.oclc.org/cdm/ref/collection/', 'https://digital.tcl.sc.edu/digital/iiif/')
@@ -272,6 +280,9 @@ class modifications(object):
         return (url, url2)
 
     def tws_replace(self):
+        # Reformatted urls should look like:
+        # url = http://dlynx.rhodes.edu:8080/jspui/handle/10267/34243
+        # url2 = http://dlynx.rhodes.edu:8080/jspui/handle/10267/34243
         url_repl1 = edm_is_shown_at.replace("https://hdl.handle.net/", "http://dlynx.rhodes.edu:8080/jspui/handle/")
         url = url_repl1.replace("http://hdl.handle.net/", "http://dlynx.rhodes.edu:8080/jspui/handle/")
         url2_repl1 = edm_is_shown_at.replace("https://hdl.handle.net/", "http://dlynx.rhodes.edu:8080/jspui/handle/")
@@ -285,6 +296,9 @@ class modifications(object):
          return (url, url2)
 
     def usm_replace(self):
+        # Only first url modified, urls should look like:
+        # url = https://usm.access.preservica.com/download/thumbnail/IO_3a6951e4-7eff-46df-b8a6-d683d15957d9
+        # url2 = https://usm.access.preservica.com/uncategorized/IO_3a6951e4-7eff-46df-b8a6-d683d15957d9
         url = self.edm_is_shown_at.replace("https://usm.access.preservica.com/uncategorized/", "https://usm.access.preservica.com/download/thumbnail/")
         url2 = self.edm_is_shown_at
         return (url, url2)
@@ -297,11 +311,17 @@ class modifications(object):
         return (url, url2)
 
     def vrc_replace(self):
+        # Only first url modified, urls should look like:
+        # url = https://digital.library.vcu.edu/islandora/object/vcu%3A36117/datastream/TN/view
+        # url2 = https://digital.library.vcu.edu/islandora/object/vcu%3A36117
         url = self.edm_is_shown_at + "/datastream/TN/view"
         url2 = self.edm_is_shown_at
         return (url, url2)
 
     def youtube_replace(self):
+        # Only first url modified, urls should look like:
+        # url = http://img.youtube.com/vi/MEXWrrRMT6A/hqdefault.jpg
+        # url2 = https://www.youtube.com/embed/MEXWrrRMT6A
         url1 = self.edm_is_shown_at.replace("https://www.youtube.com/embed/","http://img.youtube.com/vi/")
         url2 = url1.replace("https://youtube.com/embed/", "http://img.youtube.com/vi/")
         url = url2 + "/hqdefault.jpg"
