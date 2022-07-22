@@ -291,16 +291,6 @@ class modifications(object):
         url2 = self.edm_is_shown_at
         return (url, url2)
 
-    def wsh_replace(self):
-        # Only first url modified, urls should look like:
-        # url = https://content.wisconsinhistory.org/digital/iiif/p15932coll2/78/full/300,/0/default.jpg
-        # url2 = https://content.wisconsinhistory.org/digital/collection/p15932coll2/id/78
-        url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
-        url_rpl2 = url_rpl1.replace('https://content.wisconsinhistory.org/digital/collection/', 'https://content.wisconsinhistory.org/digital/iiif/')
-        url = url_rpl2.replace('/id', '')
-        url2 = self.edm_is_shown_at
-        return (url, url2)
-
     def valdosta_replace(self):
         url_repl1 = edm_is_shown_at.replace("https://hdl.handle.net/", "https://vtext.valdosta.edu/xmlui/handle/")
         url = url_repl1.replace("http://hdl.handle.net/", "https://vtext.valdosta.edu/xmlui/handle/")
