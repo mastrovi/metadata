@@ -26,8 +26,8 @@ class modifications(object):
         
     def aaa_replace(self):
         # Reformatted urls should look like:
-        # url =
-        # url2 =
+        # url = http://content.lib.auburn.edu/digital/iiif/aunumphoto/32/full/300,/0/default.jpg
+        # url2 = https://content.lib.auburn.edu/digital/collection/aunumphoto/id/32/
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url_rpl2 = url_rpl1.replace('http://content.lib.auburn.edu/cdm/ref/collection/', 'http://content.lib.auburn.edu/digital/iiif/')
         url = url_rpl2.replace('/id', '')
@@ -36,8 +36,8 @@ class modifications(object):
 
     def aar_replace(self):
         # Reformatted urls should look like:
-        # url =
-        # url2 =
+        # url = http://digital.archives.alabama.gov/digital/iiif/photo/1548/full/300,/0/default.jpg
+        # url2 = http://digital.archives.alabama.gov/digital/collection/photo/id/1548
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url_rpl2 = url_rpl1.replace('http://digital.archives.alabama.gov/cdm/ref/collection/', 'http://digital.archives.alabama.gov/digital/iiif/')
         url = url_rpl2.replace('/id', '')
@@ -45,17 +45,27 @@ class modifications(object):
         return (url, url2)
 
     def aasu_replace(self):
-        # Reformatted urls should look like:
-        # url =
-        # url2 =
+        # Only first url modified, urls should look like:
+        # url = https://digitalcommons.georgiasouthern.edu/art-savannah-lane/1/preview.jpg
+        # url2 = https://digitalcommons.georgiasouthern.edu/art-savannah-lane/1
         url = self.edm_is_shown_at + "/preview.jpg"
         url2 = self.edm_is_shown_at
+        return (url, url2)
+
+    def abj_replace(self):
+        # Reformatted urls should look like:
+        # url = http://cdm16044.contentdm.oclc.org/digital/iiif/BPLSB02/100/full/300,/0/default.jpg
+        # url2 = http://cdm16044.contentdm.oclc.org/digital/collection/BPLSB02/id/100
+        url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
+        url_rpl2 = url_rpl1.replace('http://cdm16044.contentdm.oclc.org/cdm/ref/collection/', 'http://cdm16044.contentdm.oclc.org/digital/iiif/')
+        url = url_rpl2.replace('/id', '')
+        url2 = self.edm_is_shown_at.replace('http://cdm16044.contentdm.oclc.org/cdm/ref/', 'http://cdm16044.contentdm.oclc.org/digital/')
         return (url, url2)
     
     def alm_replace(self):
         # Reformatted urls should look like:
-        # url =
-        # url2 =
+        # url = https://digitalcollections.libraries.ua.edu/digital/iiif/p17336coll8/0/full/300,/0/default.jpg
+        # url2 = https://digitalcollections.libraries.ua.edu/digital/collection/p17336coll8/id/0
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url_rpl2 = url_rpl1.replace('http://digitalcollections.libraries.ua.edu/cdm/ref/collection/', 'https://digitalcollections.libraries.ua.edu/digital/iiif/')
         url = url_rpl2.replace('/id', '')
@@ -64,8 +74,8 @@ class modifications(object):
 
     def auu_replace(self):
         # Reformatted urls should look like:
-        # url =
-        # url2 =
+        # url = https://radar.auctr.edu/islandora/object/auc.101%3A0014/datastream/TN/view
+        # url2 = http://hdl.handle.net/20.500.12322/auc.101%3A0014
         url2 = re.sub('http(.*):(.*):(.*)', r'http\1:\2%3A\3', self.edm_is_shown_at)
         url_rpl1 = self.edm_is_shown_at + "/datastream/TN/view"
         url_rpl2 = url_rpl1.replace('http://hdl.handle.net/20.500.12322/', 'https://radar.auctr.edu/islandora/object/')
