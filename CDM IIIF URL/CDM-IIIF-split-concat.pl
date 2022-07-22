@@ -17,10 +17,12 @@ print 'What is the base CDM URL (include https:// and the part of the URL prior 
 chomp($baseurl = <>); 
 
 
+$newfile  = $file;
+$newfile =~ s,\.xml,-iiif\.xml,;
 
 
 
-open (CONCAT, ">concatenated-xml.txt") || die "cannot open file - $!";
+open (CONCAT, ">$newfile") || die "cannot open file - $!";
  
 open (ERROR, ">delete.txt");
 
