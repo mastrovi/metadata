@@ -315,6 +315,26 @@ class modifications(object):
         url = self.edm_is_shown_at + "/datastream/TN/view"
         url2 = self.edm_is_shown_at
         return (url, url2)
+    
+    def xhs_replace(self):
+        # Reformatted urls should look like:
+        # url = http://images.indianahistory.org/digital/iiif/BPLSB02/100/full/300,/0/default.jpg
+        # url2 = http://images.indianahistory.org/digital/collection/BPLSB02/id/100
+        url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
+        url_rpl2 = url_rpl1.replace('http://images.indianahistory.org/cdm/ref/collection/', 'http://images.indianahistory.org/digital/iiif/')
+        url = url_rpl2.replace('/id', '')
+        url2 = self.edm_is_shown_at.replace('http://images.indianahistory.org/cdm/ref/', 'http://images.indianahistory.org/digital/')
+        return (url, url2)
+    
+    def wsh_replace(self):
+        # Reformatted urls should look like:
+        # url = http://content.wisconsinhistory.org/digital/iiif/BPLSB02/100/full/300,/0/default.jpg
+        # url2 = http://content.wisconsinhistory.org/digital/collection/BPLSB02/id/100
+        url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
+        url_rpl2 = url_rpl1.replace('http://content.wisconsinhistory.org/cdm/ref/collection/', 'http://content.wisconsinhistory.org/digital/iiif/')
+        url = url_rpl2.replace('/id', '')
+        url2 = self.edm_is_shown_at.replace('http://content.wisconsinhistory.org/cdm/ref/', 'http://content.wisconsinhistory.org/digital/')
+        return (url, url2)
 
     def youtube_replace(self):
         # Only first url modified, urls should look like:
