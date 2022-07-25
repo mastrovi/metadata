@@ -107,7 +107,7 @@ for item in range(items):
 pageLevelDf = pd.DataFrame(rows_list)
 pageLevelDf['Reel_Sequence_Number'] = pageLevelDf.index + 1
 
-# Export to new Excel file
+# Export to new metadata Excel file
 with pd.ExcelWriter(metadata_file) as writer:
     pageLevelDf.to_excel(writer, index=False)
 
