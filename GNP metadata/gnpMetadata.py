@@ -1,18 +1,17 @@
-import os, datetime
+import os
 import pandas as pd
 
+# Dictionary of tiles using LCCN as the key
 titles ={'sn90052391' : "The Banks County News"
 }
 
-# Dictionary of tiles using LCCN ad the key
+# Dictionary of locations using LCCN as the key
 locations = {'sn90052391' : "Douglasville GA"
 }
 
 # Ask for file
 input_file = input("What excel file would you like to run this on? ")
 file = input_file.strip('\"')
-
-
 
 # Gets directory of input excel and changes to it to do work
 work_dir = os.path.dirname(file)
