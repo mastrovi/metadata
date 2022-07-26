@@ -1,4 +1,4 @@
-As of 2022-07-26, OCLC has only implemented IIIF manifests for image files (jpg, png, etc.). PDF manifests have not yet been implemented. Use facets to isolate the appropriate records (non-Moving image, non-Sound, non-PDF files). Make sure that the format of the base url is consistent accross the records.
+As of 2022-07-26, OCLC has only implemented IIIF manifests for image files (jpg, png, etc.). PDF manifests have not yet been implemented. Use facets to isolate the appropriate records (non-Moving image, non-Sound, non-PDF files). Make sure that the format of the base url is consistent across the records.
 
 
 This perl program adds IIIF urls to ContentDM records that already exist in DLGADMIN.
