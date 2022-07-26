@@ -20,7 +20,7 @@ chomp @txt;         #get rid of all the many \n's taken into the array
 $txt = "@txt";      #read entire array into one scalar--one long string
 $txt =~ s,at\>http\:,at\>https\:,g;
 
-if ($txt =~ /u\?/)
+if ($txt =~ /u\?\//)
 	{
 	$txt =~ s,u\?\/,digital\/collection\/,g;
 	$txt =~ s,collection\/(.*?)\,(.*?)\<\/edm,collection\/$1\/id\/$2\<\/edm,g;
