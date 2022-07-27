@@ -1,11 +1,18 @@
 ### Conversion and reconciliation:
 
-1. XmlToCsv
+1. Image resize
+   * Looks in the folder form input, converts png/jpeg/jp2 to max 300x300 jpgs
+   * Extracts a page from a pdf and converts to max 300x300 jpg
+   * ***THIS WILL PERMANENTLY DELETE THE ORIGINAL FILES WITH NO ABILITY TO RECOVER***
+     * Use at your own risk
+   * Dependancies: pypdfium2, pillow
+2. XmlToCsv
    * Will transform ActiveXML from dlgadmin to a csv with record_id, url, url2
    * Url is direct path to thumbnail
    * Url2 is path to object
    * Urls may be the same if there is no path to thumbnails
-2. Reconciliation
+   * Dependancies: pandas, xml elementtree
+3. Reconciliation
    * Counts the number of records from a dlg-thumbnails directory listing
 
 ### Image Downloads
