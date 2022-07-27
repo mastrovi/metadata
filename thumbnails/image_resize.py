@@ -43,6 +43,7 @@ if pdffiles is not None:
 
         # Open pdf extract first page
         pdffile = pdfium.PdfDocument(pdf)
+        # ---- Change the number below to get a different pdf page: .get_page(0) = first page, .get_page(1) = second page, etc.
         page = pdffile.get_page(1)
         pil_image = page.render_topil()
         pil_image.save(pdffile_name)
