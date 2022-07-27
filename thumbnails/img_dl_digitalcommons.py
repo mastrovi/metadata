@@ -72,42 +72,45 @@ def image_downloader(file: object):
                     context = ssl.create_default_context(cafile=certifi.where())
                     doc = urllib.request.urlopen(url2, context=context)
                     page = html.parse(doc)
+                    full_image_url = page.xpath("//meta[@property='og:image']/@content")[0]
 
-                    try:
-                        # Try to get thumb from meta tags
-                        full_image_url = page.xpath("//meta[@property='og:image']/@content")[0]
-                    except:
+                    if full_image_url[-4:] != ".gif":
+                        break
+                    else:
                         try:
-                            # Try to get medium size image
-                            full_image_url = page.xpath("//div[@class='aside download-button']/a[@id='img-med']/@href")[0]
+                            full_image_url = page.xpath("//meta[@name='bepress_citation_pdf_url']/@content")[0]
                         except:
                             try:
-                                # Try to get thumb size image
-                                thumb_image_url = page.xpath("//div[@id='cover-img']/img/@src")[0]
+                                # Try to get medium size image
+                                full_image_url = page.xpath("//div[@class='aside download-button']/a[@id='img-med']/@href")[0]
                             except:
                                 try:
-                                    # Try to get full object
-                                    full_image_url = page.xpath("//div[@class='aside download-button']/a/@href")[0]
+                                    # Try to get thumb size image
+                                    thumb_image_url = page.xpath("//div[@id='cover-img']/img/@src")[0]
                                 except:
                                     try:
-                                        # Alternate full object path
-                                        full_image_url = page.xpath("//a[@id='alpha-pdf']/@href")[0]
+                                        # Try to get full object
+                                        full_image_url = page.xpath("//div[@class='aside download-button']/a/@href")[0]
                                     except:
                                         try:
-                                            # Try additional files
-                                            full_image_url = page.xpath("//div[@class='files']/span/a/@href")[0]
+                                            # Alternate full object path
+                                            full_image_url = page.xpath("//a[@id='alpha-pdf']/@href")[0]
                                         except:
-                                            print('Object Couldn\'t be retreived ', file_name)
-                                            # Add to counter
-                                            fail_counter += 1
+                                            try:
+                                                # Try additional files
+                                                full_image_url = page.xpath("//div[@class='files']/span/a/@href")[0]
+                                            except:
+                                                print('Object Couldn\'t be retreived ', file_name)
+                                                # Add to counter
+                                                fail_counter += 1
 
-                                            # Open text file and append filename and url
-                                            fail_text = open("failed.txt", "a")
-                                            fail_text.writelines(file_name + "," + url2 + "\n")
-                                            fail_text.close()
+                                                # Open text file and append filename and url
+                                                fail_text = open("failed.txt", "a")
+                                                fail_text.writelines(file_name + "," + url2 + "\n")
+                                                fail_text.close()
 
-                                            # Pause for a second to be kinder to the server
-                                            time.sleep(1)
+                                                # Pause for a second to be kinder to the server
+                                                time.sleep(1)
 
                     try:
                         r = requests.get(full_image_url, stream=True)
