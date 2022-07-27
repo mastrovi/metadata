@@ -74,9 +74,7 @@ def image_downloader(file: object):
                     page = html.parse(doc)
                     full_image_url = page.xpath("//meta[@property='og:image']/@content")[0]
 
-                    if full_image_url[-4:] != ".gif":
-                        break
-                    else:
+                    if full_image_url[-4:] == ".gif":
                         try:
                             full_image_url = page.xpath("//meta[@name='bepress_citation_pdf_url']/@content")[0]
                         except:
