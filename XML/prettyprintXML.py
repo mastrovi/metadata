@@ -1,5 +1,9 @@
 import xml.etree.ElementTree as ET
 
+'''
+Useful if your originating XML is huge and and you can't format it in a text editor
+'''
+
 # input file - full path including file and extension
 f = ""
 #output file - full path including file and extension, doesn't have to exist yet
