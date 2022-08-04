@@ -263,8 +263,9 @@ class modifications(object):
         url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
         url_rpl2 = url_rpl1.replace('https://digital.tcl.sc.edu/digital/collection/', 'https://digital.tcl.sc.edu/digital/iiif/')
         url_rpl3 = url_rpl2.replace('http://cdm17173.contentdm.oclc.org/cdm/ref/collection/', 'https://digital.tcl.sc.edu/digital/iiif/')
-        url = url_rpl3.replace('/id', '')
-        url2 = self.edm_is_shown_at
+        url_rpl4 = url_rpl3.replace('http://digital.tcl.sc.edu/cdm/ref/collection/', 'https://digital.tcl.sc.edu/digital/iiif/')
+        url = url_rpl4.replace('/id', '')
+        url2 = self.edm_is_shown_at.replace('http://digital.tcl.sc.edu/cdm/ref/collection/', 'http://digital.tcl.sc.edu/digital/')
         return (url, url2)
 
     def tws_replace(self):
