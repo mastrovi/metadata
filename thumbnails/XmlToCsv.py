@@ -150,9 +150,10 @@ class modifications(object):
         return (url, url2)
 
     def geusc_replace(self):
-        # No reformatting, just putting urls into the correct csv format
-        url = self.edm_is_shown_at
-        url2 = self.edm_is_shown_at
+        # Only first url modified, urls should look like:
+        # https://curate.library.emory.edu//iiif/088qbzkh6r-cor/thumbnail
+        url =
+        url2 =
         return (url, url2)
 
     def gkj_replace(self):
