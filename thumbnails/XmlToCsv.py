@@ -152,8 +152,8 @@ class modifications(object):
     def geusc_replace(self):
         # Only first url modified, urls should look like:
         # https://curate.library.emory.edu//iiif/088qbzkh6r-cor/thumbnail
-        url =
-        url2 =
+        #url =
+        #url2 =
         return (url, url2)
 
     def gkj_replace(self):
