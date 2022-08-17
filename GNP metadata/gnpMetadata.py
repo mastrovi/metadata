@@ -2,11 +2,13 @@ import os
 import pandas as pd
 
 # Dictionary of tiles using LCCN as the key
-titles ={'sn90052391' : "The Banks County News"
+titles ={'sn90052391' : "The Banks County News",
+         'sn89053221' : "Pickens County Progress"
 }
 
 # Dictionary of locations using LCCN as the key
-locations = {'sn90052391' : "Douglasville GA"
+locations = {'sn90052391' : "Douglasville GA",
+             'sn89053221' : "Jasper GA"
 }
 
 # Ask for file
