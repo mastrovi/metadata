@@ -2,6 +2,8 @@ import os, htmltabletomd
 from bs4 import BeautifulSoup
 from lxml import etree as ET
 
+# This works on a directory of year xml files. I don't know if it works on the large one
+
 def collapse_tags(element, value):
     # Element = the lxml element, value = the top level tag that needs children tags collapsed
     context = ET.iterwalk(element, events=('end',))
