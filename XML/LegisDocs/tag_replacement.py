@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
-import os, htmltabletomd, re
-from bs4 import BeautifulSoup
+import os, re
 
+# I've been running this on the year xmls first, then getText_md2 to generate the markdown files
 # --- Runs on a directory, insert path here
 path = ""
 
@@ -59,30 +59,6 @@ for f in files:
         # --- Add _md to filename ---
         new_filename = prefix + '_md.xml'
 
-        # # --- Look for tables
-        # tables = filedata.find("<table>")
-        # if tables != -1:
-        #     # Parse XML
-        #     soup = BeautifulSoup(filedata, "lxml")
-        #     elementTables = soup.find_all("table")
-        #     tableIndex = 0
-        #     for table in elementTables:
-        #         table = elementTables[tableIndex].prettify()
-        #
-        #         # Create new table
-        #         newTag = soup.new_tag("newTable")
-        #         md_table = htmltabletomd.convert_table(table)
-        #         md_table = md_table.replace('<br>', ' ')
-        #         newTag.append(md_table)
-        #         elementTables[tableIndex].insert_after(newTag)
-        #
-        #         elementTables[tableIndex].extract()
-        #         tableIndex =+ 1
-        #     with open(new_filename, 'w', encoding="utf-8") as prepFile:
-        #         prepFile.write(str(soup))
-        #         print('\n', 'Your new files have been created.')
-        #
-        # else:
         # --- Write new file --
         with open(new_filename, 'w', encoding="utf-8") as prepFile:
             prepFile.write(filedata)
