@@ -14,6 +14,7 @@ locations = {'sn90052391' : "Douglasville GA",
 # Ask for file
 input_file = input("What excel file would you like to run this on? ")
 file = input_file.strip('\"')
+batch_abbreviation = input("Enter batch abbreviation: ")
 
 # Gets directory of input excel and changes to it to do work
 work_dir = os.path.dirname(file)
@@ -24,7 +25,6 @@ base = os.path.basename(file)
 metadata_file = os.path.splitext(base)[0] + "_metadata.xlsx"
 xml_file = os.path.splitext(base)[0] + ".xml"
 batch_file = os.path.splitext(base)[0] + "_rename.bat"
-batchID = os.path.splitext(base)[0]
 
 # Read Excel
 df = pd.read_excel(file)
@@ -65,17 +65,18 @@ for item in range(items):
     df['Date-Numeric'] = df['Issue Date'].dt.strftime('%Y-%m-%d')
     df['LCCN'] = df['ISSUE_NO'].str.partition('_')[0]
     df['Issue_ID'] = df['ISSUE_NO']
-    df['Batch_Name'] = batchID
-    df['Reel_Number'] = batchID
+    df['Batch_Name'] = batch_abbreviation + df['Issue Date'].dt.strftime('%Y')
+    df['Reel_Number'] = batch_abbreviation + df['Issue Date'].dt.strftime('%Y')
     lccn = df.at[item, 'LCCN']
     df['Standard_Title'] = titles[lccn]
     df['Title'] = titles[lccn] + " [" + locations[lccn] + ", " + df.at[item, 'Date'] + "]"
 
+    print("Working on ", str(df.at[item, 'Date-Numeric']))
 #    slug = df.at[item, 'id']
     item_pages = {}
     for page in range(df['Number_of_Pages'].values[item]):
         page_num = page + 1
-        issue_id = batchID + "_" + df.at[item, 'Date-Numeric'] + "_" + df.at[item, 'Edition_Order']
+        issue_id = df.at[item, 'Batch_Name'] + "_" + df.at[item, 'Date-Numeric'] + "_" + df.at[item, 'Edition_Order']
         frame_id = issue_id + "_" + f'{page_num:02}'
         digital_file_name = df.at[item, 'ISSUE_NO'] + "_" + f'{page_num:04}'
         rename = "ren " + digital_file_name + ".* " + frame_id + ".*"
