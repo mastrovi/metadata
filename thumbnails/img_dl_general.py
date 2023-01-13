@@ -25,6 +25,7 @@ repo_dams = {
     'gpm-hend' : img_dl_digitalcommons,
     'gsu' : img_dl_cdm,
     'fcs' : img_dl_omeka,
+    'fqr' : img_dl_cdm,
     'hbcula' : img_dl_cdm,
     'int' : img_dl_generic,
     'lru' : img_dl_islandora,
