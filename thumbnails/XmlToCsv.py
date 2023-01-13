@@ -92,6 +92,16 @@ class modifications(object):
         url2 = self.edm_is_shown_at
         return (url, url2)
 
+    def csu_replace(self):
+        # Reformatted urls should look like:
+        # url = http://clevelandmemory.contentdm.oclc.org/digital/iiif/afro/511/full/300,/0/default.jpg
+        # url2 = http://clevelandmemory.contentdm.oclc.org/digital/collection/afro/id/511
+        url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
+        url_rpl2 = url_rpl1.replace('http://clevelandmemory.contentdm.oclc.org/cdm/ref/collection/', 'http://clevelandmemory.contentdm.oclc.org/digital/iiif/')
+        url = url_rpl2.replace('/id', '')
+        url2 = self.edm_is_shown_at.replace('http://clevelandmemory.contentdm.oclc.org/cdm/ref/', 'http://clevelandmemory.contentdm.oclc.org/digital/')
+        return (url, url2)
+
     def dhs_replace(self):
         # No reformatting, just putting urls into the correct csv format
         url = self.edm_is_shown_at
