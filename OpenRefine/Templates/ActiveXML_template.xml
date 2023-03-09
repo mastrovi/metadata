@@ -12,9 +12,7 @@
 {{forEach(cells["public"].value.split("||"), public, "<public type=\"boolean\">" + public + "</public>\n")}}
 {{forEach(cells["local"].value.split("||"), local, "<local type=\"boolean\">" + local + "</local>\n")}}
 <portals type="array">
-<portal>
-{{forEach(cells["portal"].value.split("||"), portal, "<code>" + portal + "</code>\n")}}
-</portal>
+{{forEach(cells["portal"].value.split("||"), portal, "<portal><code>" + portal + "</code></portal>\n")}}
 </portals>
 {{forEach(cells["dpla"].value.split("||"), dpla, "<dpla type=\"boolean\">" + dpla + "</dpla>\n")}}
 <dcterms_subject type="array">
