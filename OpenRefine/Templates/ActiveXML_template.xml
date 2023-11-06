@@ -6,7 +6,7 @@
 <collection>
 {{forEach(cells["collection"].value.split("||"), coll, "<record_id>" + coll + "</record_id>\n")}}
 </collection>
-<other_colls>
+<other_coll type="array">
 {{forEach(cells["other_colls"].value.split("||"), coll, "<other_coll><record_id>" + coll + "</record_id></other_coll>\n")}}
 </other_colls>
 {{forEach(cells["public"].value.split("||"), public, "<public type=\"boolean\">" + public + "</public>\n")}}
