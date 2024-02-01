@@ -159,6 +159,18 @@ class modifications(object):
                                             'https://digitalcollections.library.miami.edu/digital/')
         return (url, url2)
 
+    def gaarchives_replace(self):
+        # Reformatted urls should look like:
+        # url = http://cdm17154.contentdm.oclc.org/digital/iiif/2/photo:1548/full/300,/0/default.jpg
+        # url2 = http://cdm17154.contentdm.oclc.org/digital/collection/photo/id/1548
+        url_rpl1 = self.edm_is_shown_at + "/full/300,/0/default.jpg"
+        url_rpl2 = url_rpl1.replace('http://cdm17154.contentdm.oclc.org/cdm/ref/collection/',
+                                    'http://cdm17154.contentdm.oclc.org/digital/iiif/2/')
+        url = url_rpl2.replace('/id/', ':')
+        url2 = self.edm_is_shown_at.replace('http://cdm17154.contentdm.oclc.org/cdm/ref/',
+                                            'http://cdm17154.contentdm.oclc.org/digital/')
+        return (url, url2)
+
     def gbc_replace(self):
         # No reformatting, just putting urls into the correct csv format
         url = self.edm_is_shown_at
