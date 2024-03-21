@@ -97,6 +97,9 @@
 </dcterms_relation>
 {{forEach(cells["item - iiif_partner_url"].value.split("||"), iiif, "<iiif_partner_url>" + iiif + "</iiif_partner_url>")}}
 {{forEach(cells["item - iiif_partner_url_enabled"].value.split("||"), iiif_enabled, "<iiif_partner_url_enabled type=\"boolean\">" + iiif_enabled + "</iiif_partner_url_enabled>")}}
+<pages_count type="array">
+{{forEach(cells["item - pages_count"].value.split("||"), rel, "<pages_count>" + rel + "</pages_count>\n")}}</pages_count>
+<iiif_partner_u type="array">{{forEach(cells["item - iiif_partner_url_enabled"].value.split("||"), rel, "<iiif_partner_url_enabled>" + rel + "</iiif_partner_url_enabled>\n")}}</iiif_partner_url_enabled>
 </item>
 
 
